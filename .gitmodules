@@ -1,0 +1,6 @@
+[submodule "ext/bgfx"]
+	path = ext/bgfx
+	url = https://github.com/bkaradzic/bgfx.git
+[submodule "ext/bx"]
+	path = ext/bx
+	url = git@github.com:bkaradzic/bx.git
