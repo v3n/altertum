@@ -23,6 +23,51 @@ project ( _name )
         "bgfx"
     }
 
+    if not _OPTIONS["with-no-luajit"] then
+        includedirs
+        {
+            ENG_DIR .. "ext/luajit/src",
+        }
+
+        configuration { "linux-* or osx" }
+            links
+            {
+                "luajit"
+            }
+
+        configuration { "osx" }
+            libdirs
+            {
+                ENG_DIR .. "ext/luajit/lib/osx_x64"
+            }
+
+        configuration { "x64", "linux-*" }
+            libdirs
+            {
+                ENG_DIR .. "ext/luajit/lib/linux_x64"
+            }
+
+        configuration { "vs*"}
+            links
+            {
+                "lua51"
+            }
+
+        configuration { "x32", "vs*" }
+            libdirs
+            {
+                ENG_DIR .. "ext/luajit/lib/win_x86"
+            }
+
+        configuration { "x64", "vs*" }
+            libdirs
+            {
+                ENG_DIR .. "ext/luajit/lib/win_x64"
+            }
+
+        configuration {} -- reset
+    end
+
     configuration { "debug or development" }
         flags {
             "Symbols"
