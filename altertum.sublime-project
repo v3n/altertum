@@ -1,0 +1,9 @@
+{
+	"folders":
+	[
+		{
+			"path": "."
+		}
+	],
+    "make_commands_makefiles": "makefile"
+}
