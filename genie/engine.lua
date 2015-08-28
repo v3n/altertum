@@ -20,7 +20,8 @@ project ( _name )
     links
     {
         "example-common",
-        "bgfx"
+        "bgfx",
+        "assimp"
     }
 
     if not _OPTIONS["with-no-luajit"] then
