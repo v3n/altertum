@@ -103,6 +103,9 @@ function toolchain(build_dir, lib_dir)
         targetsuffix "-release"
 
     configuration { "vs*" }
+        targetdir( build_dir .. "windows/bin" )
+        objdir( build_dir .. "windows/obj" )
+
         includedirs { ENG_DIR .. "engine/core/compat/msvc" }
         defines {
             "WIN32",
@@ -127,6 +130,14 @@ function toolchain(build_dir, lib_dir)
         }
 
     configuration { "osx" }
+        targetdir( build_dir .. "osx/bin" )
+        objdir( build_dir .. "osx/obj" )
+
+        libdirs
+        {
+            build_dir .. "osx/bin"
+        } 
+
         links 
         {
             "Cocoa.framework",

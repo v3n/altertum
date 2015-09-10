@@ -33,7 +33,7 @@ project ( _name )
         configuration { "linux-* or osx" }
             links
             {
-                "luajit"
+                "luajit.a"
             }
 
         configuration { "osx" }
@@ -41,11 +41,19 @@ project ( _name )
             {
                 ENG_DIR .. "ext/luajit/lib/osx_x64"
             }
+            postbuildcommands {
+                "cp    " .. ENG_DIR .. "ext/luajit/lib/osx_x64/luajit " .. ENG_DIR .. "build/osx/bin",
+                "cp -r " .. ENG_DIR .. "ext/luajit/src/jit " ..            ENG_DIR .. "build/osx/bin",
+            }
 
         configuration { "x64", "linux-*" }
             libdirs
             {
                 ENG_DIR .. "ext/luajit/lib/linux_x64"
+            }
+            postbuildcommands {
+                "cp    " .. ENG_DIR .. "ext/luajit/lib/linux_x64/luajit " .. ENG_DIR .. "build/linux/bin",
+                "cp -r " .. ENG_DIR .. "ext/luajit/src/jit " ..              ENG_DIR .. "build/linux/bin",
             }
 
         configuration { "vs*"}
