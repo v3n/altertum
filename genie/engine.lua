@@ -33,7 +33,7 @@ project ( _name )
         configuration { "linux-* or osx" }
             links
             {
-                "luajit.a"
+                "luajit"
             }
 
         configuration { "osx" }
