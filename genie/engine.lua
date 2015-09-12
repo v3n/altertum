@@ -37,6 +37,11 @@ project ( _name )
             }
 
         configuration { "osx" }
+            linkoptions
+            {
+                "-pagezero_size 10000",
+                "-image_base 100000000"
+            }
             libdirs
             {
                 ENG_DIR .. "ext/luajit/lib/osx_x64"
@@ -95,7 +100,7 @@ project ( _name )
     files 
     {
         ENG_DIR .. "src/**.h",
-        ENG_DIR .. "src/*.cpp",
+        ENG_DIR .. "src/**.cpp",
         path.join(BGFX_DIR, "examples/common/**.mm"),
     }
 
