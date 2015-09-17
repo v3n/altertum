@@ -65,12 +65,12 @@ function toolchain(build_dir, lib_dir)
 
     flags 
     {
-        -- "StaticRuntime",
-        -- "NoPCH",
-        -- "NoRTTI",
-        -- "NoExceptions",
-        -- "NoEditAndContinue",
-        -- "Symbols"
+        "StaticRuntime",
+        "NoPCH",
+        "NoRTTI",
+        "NoExceptions",
+        "NoEditAndContinue",
+        "Symbols"
     }
 
     includedirs
