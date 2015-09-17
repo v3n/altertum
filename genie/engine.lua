@@ -14,6 +14,7 @@ project ( _name )
 
     defines
     {
+        "__WITH_SSE",
         _defines
     }
 
