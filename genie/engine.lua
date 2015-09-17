@@ -96,6 +96,14 @@ project ( _name )
             "NDEBUG"
         }
 
+    -- set build type defines
+    configuration { "debug" }
+        defines { "ALTERTUM_BUILD_TYPE=\"DEBUG\"" }
+    configuration { "development" }
+        defines { "ALTERTUM_BUILD_TYPE=\"DEV\"" }
+    configuration { "release" }
+        defines { "ALTERTUM_BUILD_TYPE=\"RELEASE\"" }
+
     configuration {}
 
     files 
