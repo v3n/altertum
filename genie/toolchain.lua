@@ -106,7 +106,7 @@ function toolchain(build_dir, lib_dir)
         targetdir( build_dir .. "windows/bin" )
         objdir( build_dir .. "windows/obj" )
 
-        includedirs { ENG_DIR .. "engine/core/compat/msvc" }
+        includedirs { BX_DIR .. "include/compat/msvc" }
         defines {
             "WIN32",
             "_WIN32",
