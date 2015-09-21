@@ -30,6 +30,15 @@ osx-release:
 	make -R -C build/projects/osx config=release64
 osx: osx-debug osx-development osx-release
 
+windows-build:
+	$(GENIE) --file=genie/genie.lua vs2013
+windows-debug:
+	devenv build/projects/windows/senior.sln /Build "debug|x64"
+windows-development:
+	devenv build/projects/windows/senior.sln /Build "development|x64"
+windows-release:
+	devenv build/projects/windows/senior.sln /Build "release|x64"
+
 .PHONY: clean
 clean:
 	@echo Cleaning...
