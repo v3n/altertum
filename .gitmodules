@@ -4,3 +4,7 @@
 [submodule "ext/bx"]
 	path = ext/bx
 	url = git@github.com:bkaradzic/bx.git
+[submodule "ext/fswatch"]
+	path = ext/fswatch
+	url = git@github.com:emcrisostomo/fswatch.git
+	branch = feature/windows-support
