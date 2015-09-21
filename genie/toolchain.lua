@@ -79,7 +79,11 @@ function toolchain(build_dir, lib_dir)
         BX_DIR .. "include/"
     }
 
-    defines {}
+    defines {
+    	"__STDC_FORMAT_MACROS",
+    	"__STDC_CONSTANT_MACROS",
+    	"__STDC_LIMIT_MACROS",
+	}
 
     configuration { "gmake" }
         buildoptions
