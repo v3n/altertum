@@ -45,13 +45,13 @@ project "fswatch"
 
     configuration { "linux" }
         defines { "HAVE_STRUCT_STAT_ST_MTIME" }
-        files
-        {
-            LIBFSWATCH_SRC_DIR .. "c++/kqueue_monitor.cpp",
-            LIBFSWATCH_SRC_DIR .. "c++/inotify_monitor.cpp"
-        }
+        files { LIBFSWATCH_SRC_DIR .. "c++/inotify_monitor.cpp" }
 
     configuration { "osx or bsd" }
         defines { "HAVE_STRUCT_STAT_ST_MTIMESPEC" }
-        files { LIBFSWATCH_SRC_DIR .. "c++/fsevents_monitor.cpp" }
+
+    configuration { "bsd" }
+        files { LIBFSWATCH_SRC_DIR .. "c++/kqueue_monitor.cpp" }
+
+
 end
