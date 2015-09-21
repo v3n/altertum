@@ -11,6 +11,8 @@ project "assimp"
     language "C++"
     kind "StaticLib"
 
+    removeflags { "NoExceptions", "NoRTTI" }
+
     includedirs
     {
         ASSIMP_DIR .. "include/",
