@@ -68,13 +68,13 @@ project ( _name )
                 "lua51"
             }
 
-        configuration { "x32", "vs*" }
-            libdirs
-            {
-                ENG_DIR .. "ext/luajit/lib/win_x86"
-            }
+        -- configuration { "x32", "vs*" }
+        --     libdirs
+        --     {
+        --         ENG_DIR .. "ext/luajit/lib/win_x86"
+        --     }
 
-        configuration { "x64", "vs*" }
+        configuration { "vs*" }
             libdirs
             {
                 ENG_DIR .. "ext/luajit/lib/win_x64"
