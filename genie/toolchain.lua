@@ -150,10 +150,8 @@ function toolchain(build_dir, lib_dir)
             "OpenGL.framework"
         }
 
-        includedirs
-        {
-            "/usr/include/malloc"
-        }
+        includedirs { BX_DIR .. "include/compat/osx" }
+
 
     configuration {} --reset config
 end
