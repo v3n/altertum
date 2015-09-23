@@ -25,6 +25,18 @@ project ( _name )
         "assimp"
     }
 
+    files 
+    {
+        ENG_DIR .. "src/**.h",
+        ENG_DIR .. "src/**.cpp",
+        path.join(BGFX_DIR, "examples/common/**.mm"),
+    }
+
+    excludes
+    {
+        ENG_DIR .. "src/foundation/unit_test.cpp"
+    }
+
     if not _OPTIONS["with-no-luajit"] then
         includedirs
         {
@@ -105,18 +117,6 @@ project ( _name )
         defines { "ALTERTUM_BUILD_TYPE=\"\\\"RELEASE\\\"\"" }
 
     configuration {}
-
-    files 
-    {
-        ENG_DIR .. "src/**.h",
-        ENG_DIR .. "src/**.cpp",
-        path.join(BGFX_DIR, "examples/common/**.mm"),
-    }
-
-    excludes
-    {
-        ENG_DIR .. "src/foundation/unit_test.cpp"
-    }
 
     strip()
 
