@@ -113,6 +113,11 @@ project ( _name )
         path.join(BGFX_DIR, "examples/common/**.mm"),
     }
 
+    excludes
+    {
+        ENG_DIR .. "src/foundation/unit_test.cpp"
+    }
+
     strip()
 
     configuration {}
