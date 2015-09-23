@@ -85,6 +85,8 @@ namespace foundation {
 			return ei;
 		}
 
+		template<typename T> FindResult find(const Hash<T> &h, uint64_t key);
+
 		template<typename T> void erase(Hash<T> &h, const FindResult &fr)
 		{
 			if (fr.data_prev == END_OF_LIST)
