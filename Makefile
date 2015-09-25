@@ -19,6 +19,7 @@ OS=windows
 endif
 
 GENIE=ext/bx/tools/bin/$(OS)/genie
+DOXY=doxygen
 
 osx-build:
 	$(GENIE) --file=genie/genie.lua --compiler=osx gmake
@@ -38,6 +39,9 @@ windows-development:
 	devenv build/projects/windows/senior.sln /Build "development|x64"
 windows-release:
 	devenv build/projects/windows/senior.sln /Build "release|x64"
+
+doxy:
+	$(DOXY) docs/Doxyfile
 
 .PHONY: clean
 clean:

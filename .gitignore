@@ -2,6 +2,13 @@
 #   C++
 ##
 
+##
+# Doxygen
+##
+
+docs/html/
+docs/doxygen_warn.log
+
 # Compiled Object files
 *.slo
 *.lo
