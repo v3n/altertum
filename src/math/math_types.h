@@ -31,6 +31,7 @@ struct Quaternion
 struct Matrix3
 {
     Vector3 a, b, c, d;
+    Vector3 a, b, c;
 
     static inline Matrix3 identity() 
     { 
