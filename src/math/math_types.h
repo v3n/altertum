@@ -3,6 +3,12 @@
  * License: https://github.com/v3n/altertum/blob/master/LICENSE
  */
 
+/**
+ * @file math_types.h
+ * Light-weight type declaration for math POD structs
+ * Include corresponding file for type API
+ */
+
 #pragma once
 
 namespace altertum
@@ -28,9 +34,9 @@ struct Quaternion
     float x, y, z, w;
 };
 
+/** Row-column 3x3 Matrix */
 struct Matrix3
 {
-    Vector3 a, b, c, d;
     Vector3 a, b, c;
 
     static inline Matrix3 identity() 
@@ -45,6 +51,7 @@ struct Matrix3
     } 
 };
 
+/** Row-column 4x4 Matrix */
 struct Matrix4
 {
     Vector4 a, b, c, d;

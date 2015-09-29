@@ -3,6 +3,7 @@
  * License: https://github.com/v3n/altertum/blob/master/LICENSE
  */
 
+#pragma once
 
 namespace altertum
 {
