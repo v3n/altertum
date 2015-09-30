@@ -22,6 +22,12 @@ struct Vector2
 struct Vector3
 {
     float x, y, z;
+
+    static inline Vector3 up()
+    {
+        Vector3 v = { 0, 1, 0 };
+        return v;
+    }
 };
 
 struct Vector4
