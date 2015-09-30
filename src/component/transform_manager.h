@@ -76,9 +76,9 @@ public:
     bool is_valid(TransformInstance i) { return true; }
 
     /** get local matrix for TransformInstance @a i */
-    Matrix4 local(TransformInstance i) { return _data.local[i.i]; }
+    inline Matrix4 local(TransformInstance i) { return _data.local[i.i]; }
     /** get world matrix for TransformInstance @a i */
-    Matrix4 world(TransformInstance i) { return _data.world[i.i]; }
+    inline Matrix4 world(TransformInstance i) { return _data.world[i.i]; }
 
     /** set matrix of instance @i from @a local */
     void set_local(TransformInstance i, Matrix4 local);
