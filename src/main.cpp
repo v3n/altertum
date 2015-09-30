@@ -47,6 +47,7 @@ int _main_(int /*_argc*/, char** /*_argv*/)
 						 , s_logo
 						 , 160
 						 );
+		bgfx::dbgTextPrintf(0, 0, 0x2f, ALTERTUM_VERSION_STRING);
 		bgfx::dbgTextPrintf(0, 1, 0x4f, "bgfx/examples/00-helloworld");
 		bgfx::dbgTextPrintf(0, 2, 0x6f, "Description: Initialization and debug text.");
 
