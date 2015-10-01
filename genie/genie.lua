@@ -50,7 +50,9 @@ dofile (BGFX_DIR .. "scripts/example-common.lua")
 assimp_library()
 
 if _OPTIONS["with-tools"] then
-    dofile ( "shaderc.lua" )
+    dofile ( BGFX_DIR .. "scripts/shaderc.lua" )
+    dofile ( BGFX_DIR .. "scripts/geometryc.lua" )
+    dofile ( BGFX_DIR .. "scripts/texturec.lua" )
 end
 
 group "engine"
