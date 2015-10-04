@@ -5,6 +5,8 @@
 
 #pragma once
 
+#include <climits>
+
 #include "foundation/collection_types.h"
 #include "foundation/memory_types.h"
 #include "math/math_types.h"
@@ -72,8 +74,8 @@ public:
     /** destroys a single instance @a i */
     void destroy(unsigned i);
 
-    /** @fixme this should actually return a rational result */
-    bool is_valid(TransformInstance i) { return true; }
+    /** returns whether or not the instance is valid */
+    inline bool is_valid(TransformInstance i) { return i.i < UINT_MAX && i.i < _data.size; }
 
     /** get local matrix for TransformInstance @a i */
     inline Matrix4 local(TransformInstance i) { return _data.local[i.i]; }
