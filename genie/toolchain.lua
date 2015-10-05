@@ -49,9 +49,9 @@ function toolchain(build_dir, lib_dir)
         end
 
         if "osx" == _OPTIONS["compiler"] or "linux-clang" == _OPTIONS["compiler"] then
-            -- premake.gcc.cc = "clang"
-            -- premake.gcc.cxx = "clang++"
-            -- premake.gcc.ar = "ar"
+            premake.gcc.cc = "clang"
+            premake.gcc.cxx = "clang++"
+            premake.gcc.ar = "ar"
         end
     end
 
@@ -88,13 +88,14 @@ function toolchain(build_dir, lib_dir)
     configuration { "gmake" }
         buildoptions
         {
-            -- "-m64"
+            "-m64",
+            "-std=c++11"
         }
 
     configuration { "development or release" }
         flags 
         {
-            -- "OptimizeSpeed"
+            "OptimizeSpeed"
         }
 
     configuration { "debug", "native" }
