@@ -30,42 +30,24 @@ inline bool operator==(const Vector3& v1, const Vector3& v2)
     return (v1.x == v2.x) && (v1.y == v2.y) && (v1.z == v2.z);
 }
 
-/** cross product */
-inline Vector3 operator*(const Vector3& v1, const Vector3& v2)
-{
-    Vector3 v = { 
-        v1.y * v2.z - v1.z * v2.y,
-        v1.z * v2.x - v1.x * v2.z,
-        v1.x * v2.y - v1.y * v2.x
-    };
-    return v;
-}
-
-/** cross product */
-inline Vector3 operator*=(Vector3& v1, const Vector3& v2)
-{
-    v1 = v1 * v2;
-    return v1;
-}
-
 /** dot product */
 inline float operator*(const Vector3& v1, const Vector3& v2)
 {
-    return v1.x * v2.x + v1.y * v2.y + v1.z * v2.z
+    return v1.x * v2.x + v1.y * v2.y + v1.z * v2.z;
 }
 
 /** scalar division */
 inline Vector3 operator/=(Vector3& v1, const float f)
 {
-    v1.x =/ f;
-    v1.y =/ f;
-    v1.z =/ f;
+    v1.x /= f;
+    v1.y /= f;
+    v1.z /= f;
 
     return v1;
 }
 
 /** scalar division */
-inline Vector3 operator/(const Vector3 v1, const float f)
+inline Vector3 operator/(Vector3 v1, const float f)
 {
     v1 /= f;
     return v1;
@@ -78,7 +60,12 @@ namespace vector3
 /** cross product */
 inline Vector3 cross(const Vector3& v1, const Vector3& v2)
 {
-    return v1 * v2;
+    Vector3 v = { 
+        v1.y * v2.z - v1.z * v2.y,
+        v1.z * v2.x - v1.x * v2.z,
+        v1.x * v2.y - v1.y * v2.x
+    };
+    return v;
 }
 
 /** Dot product */
@@ -96,7 +83,7 @@ inline float distance(const Vector3& v)
 /* Returns unit vector for @a v */
 inline Vector3 normalize(const Vector3& v)
 {
-    return v / distance;
+    return v / distance(v);
 }
 
 }; // namespace vector3
