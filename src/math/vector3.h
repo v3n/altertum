@@ -78,7 +78,7 @@ inline Vector3 operator+=(Vector3& v1, const float f)
 
 inline Vector3 operator+(Vector3 v1, const float f)
 {
-    v1 += v2;
+    v1 += f;
     return v1;
 }
 
@@ -108,7 +108,7 @@ inline Vector3 operator-=(Vector3& v1, const float f)
 
 inline Vector3 operator-(Vector3 v1, const float f)
 {
-    v1 -= v2;
+    v1 -= f;
     return v1;
 }
 

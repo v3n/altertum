@@ -165,5 +165,13 @@ inline Matrix4 compose(const Vector3& scale, const Quaternion& rotation, const V
     return tmp;
 }
 
+// inline Matrix4 look_at(
+//     const Vector3& eye, 
+//     const Vector3& target, 
+//     const Vector3& up = Vector3::up())
+// {
+//     // Vector3 
+// }
+
 }; // namespace matrix4
 }; // namespace altertum
