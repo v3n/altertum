@@ -21,7 +21,29 @@ namespace altertum
 /* constructors */
 namespace vector3
 {
+    /** Construct Vector3 from Vector2 */
+    inline Vector3 vector3(Vector2 v)
+    {
+        Vector3 tmp;
 
+        tmp.x = v.x;
+        tmp.y = v.y;
+        tmp.z = 0.0f;
+
+        return tmp;
+    }
+
+    /** Construct Vector3 from components */
+    inline Vector3 vector3(float x, float y, float z)
+    {
+        Vector3 tmp;
+
+        tmp.x = x;
+        tmp.y = y;
+        tmp.z = z;
+
+        return tmp;
+    }
 }; // namespace vector3
 
 /** Returns result of comparison of vectors @a v1 and @a v2. */
@@ -34,6 +56,23 @@ inline bool operator==(const Vector3& v1, const Vector3& v2)
 inline float operator*(const Vector3& v1, const Vector3& v2)
 {
     return v1.x * v2.x + v1.y * v2.y + v1.z * v2.z;
+}
+
+/** Returns result of scalar multiplication of Vector3 @a v and float @a f */
+inline Vector3 operator*=(Vector3& v, const float f)
+{
+    v.x *= f;
+    v.y *= f;
+    v.z *= f;
+
+    return v;
+}
+
+/** Returns result of scalar multiplication of Vector3 @a v and float @a f */
+inline Vector3 operator*(Vector3 v, const float f)
+{
+    v *= f;
+    return v;
 }
 
 /** scalar division */
