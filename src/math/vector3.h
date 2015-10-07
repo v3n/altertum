@@ -125,5 +125,16 @@ inline Vector3 normalize(const Vector3& v)
     return v / distance(v);
 }
 
+
+inline Vector2 xy(const Vector3& v)
+{
+    Vector2 tmp;
+
+    tmp.x = v.x;
+    tmp.y = v.y;
+
+    return tmp;
+}
+
 }; // namespace vector3
 }; // namespace altertum
