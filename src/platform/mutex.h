@@ -18,9 +18,10 @@ namespace altertum
 
 struct Mutex
 {
-private:
+public:
 #if ALTERTUM_PLATFORM_POSIX
     pthread_mutex_t _mutex;
+private:
     pthread_mutexattr_t _attr;
 #elif ALTERTUM_PLATFORM_WINDOWS
     CRITICAL_SECTION _mutex;
