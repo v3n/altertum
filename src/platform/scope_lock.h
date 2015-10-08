@@ -17,7 +17,7 @@ namespace altertum
 struct ScopeLock
 {
 private:
-    Mutex _mutex;
+    Mutex & _mutex;
 
 public:
     /** Locks @a m mutex. */
