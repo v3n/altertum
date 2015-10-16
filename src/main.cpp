@@ -3,10 +3,14 @@
  * License: http://www.opensource.org/licenses/BSD-2-Clause
  */
 
+#include <unistd.h>
+
 #include "common.h"
 #include <bgfx/bgfx.h>
 #include <bx/uint32_t.h>
+#include "bgfx_utils.h"
 #include "logo.h"
+#include "platform.h"
 
 int _main_(int /*_argc*/, char** /*_argv*/)
 {
