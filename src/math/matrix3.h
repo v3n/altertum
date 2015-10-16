@@ -41,17 +41,17 @@ inline Matrix3 rotation(const Quaternion& rot)
 {
     Matrix3 tmp;
 
-    tmp.a.x = 1.0 - (rot.y * rot.y + rot.z * rot.z);
+    tmp.a.x = 1.0f - (rot.y * rot.y + rot.z * rot.z);
     tmp.a.y = (rot.x * rot.y - rot.w * rot.z);
     tmp.a.z = (rot.x * rot.z + rot.w * rot.y);
 
     tmp.b.x = (rot.x * rot.y + rot.w * rot.z);
-    tmp.b.y = 1.0 - (rot.x * rot.x + rot.z * rot.z);
+    tmp.b.y = 1.0f - (rot.x * rot.x + rot.z * rot.z);
     tmp.b.z = (rot.y * rot.z - rot.w * rot.x);
 
     tmp.c.x = (rot.x * rot.z - rot.w * rot.y);
     tmp.c.y = (rot.y * rot.z + rot.w * rot.x);
-    tmp.c.z = 1.0 - (rot.x * rot.x + rot.y * rot.y);
+    tmp.c.z = 1.0f - (rot.x * rot.x + rot.y * rot.y);
 
     return tmp;
 }
