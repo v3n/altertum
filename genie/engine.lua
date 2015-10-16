@@ -37,6 +37,12 @@ project ( _name )
         ENG_DIR .. "src/foundation/unit_test.cpp"
     }
 
+    configuration { "gmake" }
+        buildoptions
+        {
+            "-std=c++11"
+        }
+
     if not _OPTIONS["with-no-luajit"] then
         includedirs
         {

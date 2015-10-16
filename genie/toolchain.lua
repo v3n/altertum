@@ -89,7 +89,6 @@ function toolchain(build_dir, lib_dir)
         buildoptions
         {
             "-m64",
-            "-std=c++11"
         }
 
     configuration { "development or release" }
