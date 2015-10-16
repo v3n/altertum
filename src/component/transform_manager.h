@@ -55,7 +55,7 @@ private:
     };
     TransformData _data;
 
-    inline TransformInstance make_instance(int i) const { TransformInstance inst = { i }; return inst; }
+    inline TransformInstance make_instance(unsigned i) const { TransformInstance inst = { i }; return inst; }
 
 public:
     // TransformManager(Allocator * allocator) : _allocator(allocator) { }
