@@ -10,6 +10,7 @@
 #include "transform_manager.h"
 
 using namespace foundation;
+using namespace altertum;
 using namespace altertum::components::transform;
 
 /**
@@ -59,7 +60,7 @@ void TransformManager::allocate(Allocator &allocator, unsigned sz)
 /** run garbage collection for TransformManager */
 void TransformManager::gc(const EntityManager &em)
 {
-    unsigned cache_misses;
+    unsigned cache_misses = 0;
     while ( _data.size > 0 && cache_misses < 4 )
     {
         unsigned i = random();
