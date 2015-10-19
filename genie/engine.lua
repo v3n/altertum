@@ -5,11 +5,13 @@
 function engine_project( _name, _kind, _defines )
 project ( _name )
     kind (_kind)
+    language "C++"
 
     includedirs 
     {
         ENG_DIR .. "src/",
-        BGFX_DIR .. "examples/common"
+        BGFX_DIR .. "examples/common",
+        ENG_DIR .. "ext/luajit/src"
     }
 
     defines
