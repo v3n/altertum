@@ -8,7 +8,6 @@
 #if ALTERTUM_PLATFORM_POSIX
 #   include <pthread.h>
 #elif ALTERTUM_PLATFORM_WINDOWS 
-#   error MSVC threading unimplemented
 #   include "win_headers.h"
 #   include <process.h>
 #endif
@@ -33,6 +32,7 @@ private:
     ThreadMethod  _method;
     void * _data;
     size_t _stack_size;
+    Semaphore _sem;
 
 public:
     Thread()
@@ -72,13 +72,13 @@ public:
         }
 
         /* create thread */
-        // result = pthread_create(&_handle, &attr, _method, this);
+        result = pthread_create(&_handle, &attr, thread_process, this);
 
         /* clean up attr */
         result = pthread_attr_destroy(&attr);
 
 #   elif ALTERTUM_PLATFORM_WINDOWS
-#       error not implemented
+        _handle = CreateThread(NULL, m_stackSize, threadFunc, this, 0, NULL);
 #   endif // ALTERTUM_PLATFORM_*
 
         _is_active = true;
@@ -95,7 +95,10 @@ public:
         ASSERT(result == 0);
         _handle = 0;
 #   elif ALTERTUM_PLATFORM_WINDOWS
-#       error not implemented
+        WaitForSingleObject(_handle, INFINITE);
+        GetExitCodeThread(_handle, (DWORD*)&m_exitCode);
+        CloseHandle(_handle);
+        _handle = INVALID_HANDLE_VALUE;
 #   endif // ALTERTUM_PLATFORM_*
 
         _is_active = false;
@@ -105,6 +108,30 @@ public:
     {
         return _is_active;
     }
+
+private:
+
+    int32_t run()
+    {
+        _sem.signal();
+        return _method(_data);
+    }
+
+#   if ALTERTUM_PLATFORM_POSIX
+    static void * thread_process(void * arg)
+    {
+        static int32_t result = -1;
+        result = ((Thread *)arg)->run();
+        return (void *)&result;
+    }
+#   elif ALTERTUM_PLATFORM_WINDOWS
+    static DWORD WINAPI thread_process(void * arg)
+    {
+        Thread * thread = (Thread *)arg;
+        int32_t result = thread->run();
+        return result;
+    }
+#   endif
 
 private: /* no copying */
     Thread(const Thread&);
