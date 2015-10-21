@@ -3,7 +3,7 @@
 	url = https://github.com/bkaradzic/bgfx.git
 [submodule "ext/bx"]
 	path = ext/bx
-	url = git@github.com:bkaradzic/bx.git
+	url = https://github.com/bkaradzic/bx.git
 [submodule "ext/bullet3"]
 	path = ext/bullet3
-	url = git@github.com:bulletphysics/bullet3.git
+	url = https://github.com/bulletphysics/bullet3.git

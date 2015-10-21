@@ -1,6 +1,6 @@
 # build configuration
 build:
-  project: build\projects\vs2013\engine.sln
+  project: build/projects/vs2013/engine.sln
   # enable MSVC parallel building
   parallel: true
 
@@ -25,13 +25,21 @@ matrix:
   # immediately exit upon failure
   fast_finish: true
 
+# environment:
+#   PATH: "C:/projects/altertum/ext/bx/tools/bin/windows;%PATH%"
+
+install:
+  - git submodule update --init --recursive
+
 # generate project files with genie
 before_build:
-  - ext\bx\tools\bin\windows\genie --file=genie\genie.lua vs2013
+  - echo %PATH%
+  - echo %CD%
+  - .\ext\bx\tools\bin\windows\genie --file=genie\genie.lua vs2013
 
 # slack notifications
-notifications:
-  - provider: Slack
-    auth_token:
-      secure: guMEhdekfCAVCL2fcYXQnjvOARZetae8mt5GVGO8Cz1sq3jPOpfQ952wntnFPLmCYOC3T9Fdtj6dYL8C905f4A==
-    channel: code
+# notifications:
+#   - provider: Slack
+#     auth_token:
+#       secure: guMEhdekfCAVCL2fcYXQnjvOARZetae8mt5GVGO8Cz1sq3jPOpfQ952wntnFPLmCYOC3T9Fdtj6dYL8C905f4A==
+#     channel: code
