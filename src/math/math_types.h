@@ -25,7 +25,7 @@ struct Vector3
 
     static inline Vector3 up()
     {
-        Vector3 v = { 0, 1, 0 };
+        Vector3 v = { 0.0f, 1.0f, 0.0f };
         return v;
     }
 };
@@ -48,9 +48,9 @@ struct Matrix3
     static inline Matrix3 identity() 
     { 
         Matrix3 m = {
-            {1.0, 0.0, 0.0},
-            {0.0, 1.0, 0.0},
-            {0.0, 0.0, 1.0}
+            {1.0f, 0.0f, 0.0f},
+            {0.0f, 1.0f, 0.0f},
+            {0.0f, 0.0f, 1.0f}
         };
         return m;
 
@@ -65,10 +65,10 @@ struct Matrix4
     static inline Matrix4 identity()
     {
         Matrix4 m = {
-            {1.0, 0.0, 0.0, 0.0}, 
-            {0.0, 1.0, 0.0, 0.0}, 
-            {0.0, 0.0, 1.0, 0.0},
-            {0.0, 0.0, 0.0, 1.0}
+            {1.0f, 0.0f, 0.0f, 0.0f}, 
+            {0.0f, 1.0f, 0.0f, 0.0f}, 
+            {0.0f, 0.0f, 1.0f, 0.0f},
+            {0.0f, 0.0f, 0.0f, 1.0f}
         };
         return m;
 
