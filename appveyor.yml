@@ -29,13 +29,13 @@ matrix:
 #   PATH: "C:/projects/altertum/ext/bx/tools/bin/windows;%PATH%"
 
 install:
-  - git submodule update --init --recursive
+  - git submodule update --init --recursive --depth 1
 
 # generate project files with genie
 before_build:
   - echo %PATH%
   - echo %CD%
-  - .\ext\bx\tools\bin\windows\genie --file=genie\genie.lua vs2013
+  - .\ext\bx\tools\bin\windows\genie --file=genie\genie.lua --without-cl vs2013
 
 # slack notifications
 # notifications:
