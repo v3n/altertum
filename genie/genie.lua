@@ -49,7 +49,7 @@ toolchain (ENG_BUILD_DIR, ENG_EXT_DIR)
 group "libs"
 bgfxProject("", "StaticLib", os.is("windows") and { "BGFX_CONFIG_RENDERER_DIRECT3D9=1" } or {})
 dofile (BGFX_DIR .. "scripts/example-common.lua")
-assimp_library()
+-- assimp_library()
 bullet_library("StaticLib")
 
 if _OPTIONS["with-tools"] then
