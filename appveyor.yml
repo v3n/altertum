@@ -29,7 +29,7 @@ matrix:
 #   PATH: "C:/projects/altertum/ext/bx/tools/bin/windows;%PATH%"
 
 install:
-  - git submodule update --init --recursive --depth 1
+  - git submodule update --init --recursive
 
 # generate project files with genie
 before_build:
