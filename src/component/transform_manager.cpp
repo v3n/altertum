@@ -63,7 +63,7 @@ void TransformManager::gc(const EntityManager &em)
     unsigned cache_misses = 0;
     while ( _data.size > 0 && cache_misses < 4 )
     {
-        unsigned i = random();
+        unsigned i = rand() % _data.size;
         if ( em.alive(_data.entity[i]) )
         {
             ++cache_misses;
