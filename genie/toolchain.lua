@@ -142,12 +142,14 @@ function toolchain(build_dir, lib_dir)
             build_dir .. "osx/bin"
         } 
 
-        links 
+        links
         {
             "Cocoa.framework",
             "CoreVideo.framework",
             "IOKit.framework",
-            "OpenGL.framework"
+            "OpenGL.framework",
+            "QuartzCore.framework",
+            "Metal.framework"
         }
 
         includedirs { BX_DIR .. "include/compat/osx" }
