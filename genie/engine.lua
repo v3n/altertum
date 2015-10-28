@@ -24,7 +24,7 @@ project ( _name )
     {
         "example-common",
         "bgfx",
-        "assimp"
+        -- "assimp"
     }
 
     files 
