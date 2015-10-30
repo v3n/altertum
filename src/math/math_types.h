@@ -75,4 +75,18 @@ struct Matrix4
     };
 };
 
+/** Axis-aligned bounding box */
+struct AABB
+{
+    Vector3 min;
+    Vector3 max;
+};
+
+/** Oriented bounding box */
+struct OBB
+{
+    Matrix4 transform;
+    AABB aabb;
+};
+
 }; // namespace altertum

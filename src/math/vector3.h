@@ -186,7 +186,6 @@ inline Vector3 normalize(const Vector3& v)
     return v / distance(v);
 }
 
-
 inline Vector2 xy(const Vector3& v)
 {
     Vector2 tmp;
@@ -197,22 +196,5 @@ inline Vector2 xy(const Vector3& v)
     return tmp;
 }
 
-/** AABB type with a minimum vector at (0,0,0) and max at (1,1,1), relative to the transform */
-struct AABB_t
-{
-	Vector3 minVect;
-	Vector3 maxVect;
-};
-
-/** returns true if the 2 boxes intersect, false otherwise*/
-inline bool AABBIntersect(const AABB_t& box1, const AABB_t& box2)
-{
-	return(box1.maxVect.x > box2.minVect.x &&
-		   box1.minVect.x < box2.maxVect.x &&
-		   box1.maxVect.y > box2.minVect.y &&
-		   box1.minVect.y < box2.maxVect.y &&
-		   box1.maxVect.z > box2.minVect.z &&
-		   box1.minVect.z < box2.maxVect.z);
-}
 }; // namespace vector3
 }; // namespace altertum
