@@ -80,6 +80,11 @@ struct AABB
 {
     Vector3 min;
     Vector3 max;
+	AABB(Vector3 minVect, Vector3 maxVect)
+	{
+		min = minVect;
+		max = maxVect;
+	}
 };
 
 /** Oriented bounding box */
