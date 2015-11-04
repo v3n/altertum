@@ -34,7 +34,7 @@ matrix:
 before_install:
   - echo $LANG
   - echo $LC_ALL
-  - if [[ "$CC" == "gcc" ]] then export COMPILER=gcc CC=gcc-4.9 CXX=g++-4.9; fi
-  - if [[ "$CC" == "clang "]] then export COMPILER=clang; fi
+  - if [[ "$CC" == "gcc" ]]; then export COMPILER=gcc CC=gcc-4.9 CXX=g++-4.9; fi
+  - if [[ "$CC" == "clang "]]; then export COMPILER=clang; fi
 
 script: make $TRAVIS_OS_NAME-$COMPILER $TRAVIS_OS_NAME-$BCONF
