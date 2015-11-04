@@ -28,4 +28,4 @@ before_install:
   - if [ $TRAVIS_OS_NAME == linux ]; then sudo apt-get update && sudo apt-get install -y libx11-dev libgl1-mesa-dev g++-4.9; fi
   - if [ $TRAVIS_OS_NAME == linux ]; then sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-4.9 90; fi
 
-script: make $TRAVIS_OS_NAME-build $TRAVIS_OS_NAME-$BCONF
+script: make $TRAVIS_OS_NAME-$CC $TRAVIS_OS_NAME-$BCONF

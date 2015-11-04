@@ -31,6 +31,18 @@ osx-release:
 	make -R -C build/projects/osx config=release64
 osx: osx-debug osx-development osx-release
 
+linux-gcc:
+	$(GENIE) --file=genie/genie.lua --compiler=linux-gcc --with-tools gmake
+linux-clang:
+	$(GENIE) --file=genie/genie.lua --compiler=linux-clang --with-tools gmake
+linux-debug:
+	make -R -C build/projects/linux config=debug64
+linux-development:
+	make -R -C build/projects/linux config=development64
+linux-release:
+	make -R -C build/projects/linux config=release64
+linux: linux-debug linux-development linux-release
+
 windows-build:
 	$(GENIE) --file=genie/genie.lua vs2013
 windows-debug:
