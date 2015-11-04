@@ -30,18 +30,11 @@ matrix:
             - libx11-dev
             - libgl1-mesa-dev
             - g++-4.9
-      env: 
-        - COMPILER=gcc
-      before_install:
-        - export COMPILER=gcc
-        - export CC=gcc-4.9
-        - export CXX=g++-4.9
-    - compiler: clang
-      env:
-        - COMPILER=clang
 
 before_install:
   - echo $LANG
   - echo $LC_ALL
+  - if [[ "$CC" == "gcc" ]] then export COMPILER=gcc CC=gcc-4.9 CXX=g++-4.9; fi
+  - if [[ "$CC" == "clang "]] then export COMPILER=clang; fi
 
 script: make $TRAVIS_OS_NAME-$COMPILER $TRAVIS_OS_NAME-$BCONF
