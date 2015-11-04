@@ -34,12 +34,10 @@ project ( _name )
     }
 
     configuration { "osx or ios" }
-    {
         files
         {
-            path.join(BGFX_DIR, "examples/common/**.mm"),
+            path.join(BGFX_DIR, "examples/common/**.mm")
         }
-    }
 
     excludes
     {
