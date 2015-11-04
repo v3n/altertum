@@ -40,6 +40,7 @@ project ( _name )
         }
 
     configuration {} -- reset config
+
     excludes
     {
         ENG_DIR .. "src/foundation/unit_test.cpp"
@@ -77,6 +78,13 @@ project ( _name )
             {
                 ENG_DIR .. "ext/luajit/lib/linux_x64"
             }
+            links
+            {
+                "dl",
+                "X11",
+                "GL",
+                "pthread"
+            }
             postbuildcommands {
                 "cp    " .. ENG_DIR .. "ext/luajit/lib/linux_x64/luajit " .. ENG_DIR .. "build/linux/bin",
                 "cp -r " .. ENG_DIR .. "ext/luajit/src/jit " ..              ENG_DIR .. "build/linux/bin",
@@ -87,14 +95,6 @@ project ( _name )
             {
                 "lua51"
             }
-
-        -- configuration { "x32", "vs*" }
-        --     libdirs
-        --     {
-        --         ENG_DIR .. "ext/luajit/lib/win_x86"
-        --     }
-
-        configuration { "vs*" }
             libdirs
             {
                 ENG_DIR .. "ext/luajit/lib/win_x64"
