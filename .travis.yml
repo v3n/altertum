@@ -4,6 +4,7 @@
 ## 
 
 sudo: false
+dist: trusty
 
 language: cpp
 
@@ -25,7 +26,9 @@ addons:
     packages:
       - libx11-dev
       - libgl1-mesa-dev
+      - gcc-4.9
       - g++-4.9
+      - clang
 
 matrix:
   fast_finish: true # finish build as soon as job fails
@@ -35,6 +38,6 @@ before_install:
   - echo $LC_ALL
   - if [ "$CC" == "gcc" ]; then export COMPILER=gcc CC=gcc-4.9 CXX=g++-4.9; fi
   - if [ "$CC" == "clang" ]; then export COMPILER=clang; fi
-  - echo $CC $CXX
+  - $CXX --version
 
-script: make $TRAVIS_OS_NAME-$COMPILER $TRAVIS_OS_NAME-$BCONF
+script: make -e $TRAVIS_OS_NAME-$COMPILER $TRAVIS_OS_NAME-$BCONF
