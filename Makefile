@@ -32,9 +32,9 @@ osx-release:
 osx: osx-debug osx-development osx-release
 
 linux-gcc:
-	$(GENIE) --file=genie/genie.lua --compiler=linux-gcc --with-tools gmake
+	$(GENIE) --file=genie/genie.lua --compiler=linux-gcc gmake
 linux-clang:
-	$(GENIE) --file=genie/genie.lua --compiler=linux-clang --with-tools gmake
+	$(GENIE) --file=genie/genie.lua --compiler=linux-clang gmake
 linux-debug:
 	make -R -C build/projects/linux config=debug64
 linux-development:
