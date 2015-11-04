@@ -3,7 +3,7 @@
 #  Copyright (c) 2015 Jonathan Howard
 ## 
 
-sudo: required
+sudo: false
 
 language: cpp
 
@@ -21,11 +21,18 @@ env:
 matrix:
   fast_finish: true # finish build as soon as job fails
 
+addons:
+  apt:
+    sources:
+      - ubuntu-toolchain-r-test
+    packages:
+      - libx11-dev
+      - libgl1-mesa-dev
+      - g++-4.9
+
 before_install:
   - echo $LANG
   - echo $LC_ALL
-  - if [ $TRAVIS_OS_NAME == linux ]; then sudo add-apt-repository -y ppa:ubuntu-toolchain-r/test; fi
-  - if [ $TRAVIS_OS_NAME == linux ]; then sudo apt-get update && sudo apt-get install -y libx11-dev libgl1-mesa-dev g++-4.9; fi
   - if [ $TRAVIS_OS_NAME == linux ]; then sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-4.9 90; fi
 
 script: make $TRAVIS_OS_NAME-$CC $TRAVIS_OS_NAME-$BCONF
