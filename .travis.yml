@@ -20,30 +20,28 @@ env:
 
 matrix:
   fast_finish: true # finish build as soon as job fails
-  compiler: gcc
-    addons:
-      apt:
-        sources:
-          - ubuntu-toolchain-r-test
-        packages:
-          - libx11-dev
-          - libgl1-mesa-dev
-          - g++-4.9
-
-# addons:
-#   apt:
-#     sources:
-#       - ubuntu-toolchain-r-test
-#     packages:
-#       - libx11-dev
-#       - libgl1-mesa-dev
-#       - g++-4.9
-#     # before_install:
-    #   - 
+  include: 
+    - compiler: gcc
+      addons:
+        apt:
+          sources:
+            - ubuntu-toolchain-r-test
+          packages:
+            - libx11-dev
+            - libgl1-mesa-dev
+            - g++-4.9
+      env: 
+        - COMPILER=gcc
+      before_install:
+        - export COMPILER=gcc
+        - export CC=gcc-4.9
+        - export CXX=g++-4.9
+    - compiler: clang
+      env:
+        - COMPILER=clang
 
 before_install:
   - echo $LANG
   - echo $LC_ALL
-  # - if [ $TRAVIS_OS_NAME == linux ]; then sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-4.9 90; fi
 
-script: make $TRAVIS_OS_NAME-$CC $TRAVIS_OS_NAME-$BCONF
+script: make $TRAVIS_OS_NAME-$COMPILER $TRAVIS_OS_NAME-$BCONF
