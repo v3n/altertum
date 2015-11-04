@@ -27,6 +27,7 @@ addons:
       - libx11-dev
       - libgl1-mesa-dev
       - libopencl1
+      - opencl-headers
       - gcc-4.9
       - g++-4.9
       - clang
