@@ -4,6 +4,7 @@
 #include "memory.h"
 
 #include <memory>
+#include <string.h>
 
 namespace foundation {
 	namespace array
