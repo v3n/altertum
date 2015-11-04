@@ -31,7 +31,14 @@ project ( _name )
     {
         ENG_DIR .. "src/**.h",
         ENG_DIR .. "src/**.cpp",
-        path.join(BGFX_DIR, "examples/common/**.mm"),
+    }
+
+    configuration { "osx or ios" }
+    {
+        files
+        {
+            path.join(BGFX_DIR, "examples/common/**.mm"),
+        }
     }
 
     excludes
