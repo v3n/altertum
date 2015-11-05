@@ -25,7 +25,8 @@ void TransformManager::allocate(Allocator &allocator, unsigned sz)
     TransformData new_buffer;
 
     const unsigned bytes = sz * (
-        1 * sizeof(Entity) + 
+        1 * sizeof(Entity) +
+        1 * sizeof(Pose) +
         2 * sizeof(Matrix4) +
         4 * sizeof(TransformInstance)
     );
@@ -35,7 +36,8 @@ void TransformManager::allocate(Allocator &allocator, unsigned sz)
     new_buffer.capacity     = sz;
     /* data pointers */
     new_buffer.entity       = (Entity *)(new_buffer.buffer);
-    new_buffer.local        = (Matrix4 *)(new_buffer.entity + sz);
+    new_buffer.pose         = (Pose *)(new_buffer.entity + sz);
+    new_buffer.local        = (Matrix4 *)(new_buffer.pose + sz);
     new_buffer.world        = new_buffer.local + sz;
     /* instance relation pointers */
     new_buffer.parent       = (TransformInstance *)(new_buffer.world + sz);
@@ -45,6 +47,7 @@ void TransformManager::allocate(Allocator &allocator, unsigned sz)
 
     /* copy matrices */
     memcpy(new_buffer.entity, _data.entity, _data.size * sizeof(Entity));
+    memcpy(new_buffer.pose, _data.pose, _data.size * sizeof(Pose));
     memcpy(new_buffer.local, _data.local, _data.size * sizeof(Matrix4));
     memcpy(new_buffer.world, _data.world, _data.size * sizeof(Matrix4));
     /* copy transform relations */

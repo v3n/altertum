@@ -39,14 +39,24 @@ class TransformManager
 private:
     Hash<unsigned> _map;
 
-    /** Transform data. */
+public:
+    /** Local matrix components. @note: size 40 bytes */
+    struct Pose
+    {
+        Vector3     scale;                  /** Scale. */
+        Quaternion  rotation;               /** Rotation around local origin. */
+        Vector3     translation;            /** Translation from parent. */
+    };
+
+    /** Transform data buffer. */
     struct TransformData {
         unsigned size;                      /** Number of used entries in arrays */
         unsigned capacity;                  /** Number of allocated entries in arrays */
         void * buffer;                      /** Raw buffer for data. */
 
         Entity  * entity;                   /** The entity owning this instance. */
-        Matrix4 * local;                    /** Local transform with respect to parent. */
+        Pose    * pose;                     /** Individual components that compose local transform. */
+        Matrix4 * local;                    /** Cached local transform with respect to parent. */
         Matrix4 * world;                    /** World transform. */
         TransformInstance * parent;         /** The parent instance of this instance. */
         TransformInstance * first_child;    /** The first child of this instance. */
