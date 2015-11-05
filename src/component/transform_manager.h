@@ -103,6 +103,8 @@ public:
     /** get world matrix for TransformInstance @a i */
     inline Matrix4 world(TransformInstance i) { return _data.world[i.i]; }
 
+    /** set pose of instance @a i from @a scale, @a rotation, and @a translation */
+    void set_pose(TransformInstance i, Vector3 scale, Quaternion rotation, Vector3 translation );
     /** set matrix of instance @i from @a local */
     void set_local(TransformInstance i, Matrix4 local);
     /** regenerate @a TransformInstance's world matrix from @parent */

@@ -126,6 +126,27 @@ void TransformManager::destroy(unsigned i)
 }
 
 /**
+ * Recreate pose from composite elements.
+ * @param i           TransformInstance to change
+ * @param scale       local scale
+ * @param rotation    rotation around local origin
+ * @param translation translation from local origin
+ */
+void TransformManager::set_pose(TransformInstance i, Vector3 scale, Quaternion rotation, Vector3 translation )
+{
+    _data.pose[i.i].scale = scale;
+    _data.pose[i.i].rotation = rotation;
+    _data.pose[i.i].translation = translation;
+
+    _data.local[i.i] = matrix4::compose(scale, rotation, translation);
+
+    TransformInstance parent = _data.parent[i.i];
+    Matrix4 parent_tm = is_valid(parent) ? _data.world[ parent.i ] :
+        Matrix4::identity();
+    transform(parent_tm, i);
+}
+
+/**
  * Set local matrix for TransformInstance (triggers transform)
  * @param  i     changing instance
  * @param  local new local matrix
