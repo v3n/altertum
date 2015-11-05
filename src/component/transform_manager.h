@@ -87,6 +87,17 @@ public:
     /** returns whether or not the instance is valid */
     inline bool is_valid(TransformInstance i) { return i.i < UINT_MAX && i.i < _data.size; }
 
+    /**
+     * @name instance methods
+     * @{
+     */
+
+    /** get local scale for TransformInstance @a i */
+    inline Vector3 scale(TransformInstance i) { return _data.pose[i.i].scale; }
+    /** get local rotation for TransformInstance @a i */
+    inline Quaternion rotation(TransformInstance i) { return _data.pose[i.i].rotation; }
+    /** get local translation for TransformInstance @a i */
+    inline Vector3 translation(TransformInstance i) { return _data.pose[i.i].translation; }
     /** get local matrix for TransformInstance @a i */
     inline Matrix4 local(TransformInstance i) { return _data.local[i.i]; }
     /** get world matrix for TransformInstance @a i */
@@ -96,6 +107,10 @@ public:
     void set_local(TransformInstance i, Matrix4 local);
     /** regenerate @a TransformInstance's world matrix from @parent */
     void transform(const Matrix4 &parent, TransformInstance i);
+
+    /**
+     * @}
+     */
 
 }; // class TransformManager
 
