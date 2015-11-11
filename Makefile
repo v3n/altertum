@@ -24,11 +24,11 @@ DOXY=doxygen
 osx-build:
 	$(GENIE) --file=genie/genie.lua --compiler=osx --with-tools gmake
 osx-debug:
-	make -R -C build/projects/osx config=debug64
+	$(MAKE) -R -C build/projects/osx config=debug64
 osx-development:
-	make -R -C build/projects/osx config=development64
+	$(MAKE) -R -C build/projects/osx config=development64
 osx-release:
-	make -R -C build/projects/osx config=release64
+	$(MAKE) -R -C build/projects/osx config=release64
 osx: osx-debug osx-development osx-release
 
 linux-gcc:
@@ -36,11 +36,11 @@ linux-gcc:
 linux-clang:
 	$(GENIE) --file=genie/genie.lua --compiler=linux-clang gmake
 linux-debug:
-	make -R -C build/projects/linux config=debug64
+	$(MAKE) -R -C build/projects/linux config=debug64
 linux-development:
-	make -R -C build/projects/linux config=development64
+	$(MAKE) -R -C build/projects/linux config=development64
 linux-release:
-	make -R -C build/projects/linux config=release64
+	$(MAKE) -R -C build/projects/linux config=release64
 linux: linux-debug linux-development linux-release
 
 windows-build:
