@@ -55,6 +55,10 @@ windows-release:
 doxy:
 	$(DOXY) docs/Doxyfile
 
+analyze:
+	make -R -C build/projects/osx -f senior.make clean
+	scan-build --use-analyzer=Xcode -V make -e -R -C build/projects/osx/ -f senior.make 
+
 .PHONY: clean
 clean:
 	@echo Cleaning...
