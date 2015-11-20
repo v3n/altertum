@@ -1,4 +1,4 @@
-/* 
+/*
  * Copyright (c) 2015 Jonathan Howard
  * License: https://github.com/v3n/altertum/blob/master/LICENSE
  */
@@ -14,11 +14,13 @@
 namespace altertum
 {
 
+/** 2D Vector */
 struct Vector2
 {
     float x, y;
 };
 
+/* 3D Vector */
 struct Vector3
 {
     float x, y, z;
@@ -30,11 +32,13 @@ struct Vector3
     }
 };
 
+/* 4D Vector */
 struct Vector4
 {
     float x, y, z, w;
 };
 
+/* Rotation by quaternion */
 struct Quaternion
 {
     float x, y, z, w;
@@ -45,8 +49,8 @@ struct Matrix3
 {
     Vector3 a, b, c;
 
-    static inline Matrix3 identity() 
-    { 
+    static inline Matrix3 identity()
+    {
         Matrix3 m = {
             {1.0f, 0.0f, 0.0f},
             {0.0f, 1.0f, 0.0f},
@@ -54,7 +58,7 @@ struct Matrix3
         };
         return m;
 
-    } 
+    }
 };
 
 /** Row-column 4x4 Matrix */
@@ -65,8 +69,8 @@ struct Matrix4
     static inline Matrix4 identity()
     {
         Matrix4 m = {
-            {1.0f, 0.0f, 0.0f, 0.0f}, 
-            {0.0f, 1.0f, 0.0f, 0.0f}, 
+            {1.0f, 0.0f, 0.0f, 0.0f},
+            {0.0f, 1.0f, 0.0f, 0.0f},
             {0.0f, 0.0f, 1.0f, 0.0f},
             {0.0f, 0.0f, 0.0f, 1.0f}
         };
