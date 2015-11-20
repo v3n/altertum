@@ -1,0 +1,19 @@
+root = true
+
+# global settings
+[*]
+end_of_line = lf
+insert_final_new_line = true
+trim_trailing_whitespace = true
+indent_style = space
+indent_size = 4
+
+# yml readability
+[*.yml]
+indent_style = space
+indent_size = 2
+
+# Makefiles require tabs
+[{Makefile,*.mk,*.make}]
+indent_style = tab
+
