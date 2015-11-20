@@ -1,4 +1,4 @@
-/*
+/* 
  * Copyright (c) 2015 Jonathan Howard
  * License: https://github.com/v3n/altertum/blob/master/LICENSE
  */
@@ -23,9 +23,10 @@ struct Vector3
 {
     float x, y, z;
 
-    static constexpr Vector3 up()
+    static inline Vector3 up()
     {
-        return { 0.0f, 1.0f, 0.0f };
+        Vector3 v = { 0.0f, 1.0f, 0.0f };
+        return v;
     }
 };
 
@@ -44,14 +45,16 @@ struct Matrix3
 {
     Vector3 a, b, c;
 
-    static constexpr Matrix3 identity()
-    {
-       return {
+    static inline Matrix3 identity() 
+    { 
+        Matrix3 m = {
             {1.0f, 0.0f, 0.0f},
             {0.0f, 1.0f, 0.0f},
             {0.0f, 0.0f, 1.0f}
         };
-    }
+        return m;
+
+    } 
 };
 
 /** Row-column 4x4 Matrix */
@@ -59,14 +62,16 @@ struct Matrix4
 {
     Vector4 a, b, c, d;
 
-    static constexpr Matrix4 identity()
+    static inline Matrix4 identity()
     {
-        return {
-            {1.0f, 0.0f, 0.0f, 0.0f},
-            {0.0f, 1.0f, 0.0f, 0.0f},
+        Matrix4 m = {
+            {1.0f, 0.0f, 0.0f, 0.0f}, 
+            {0.0f, 1.0f, 0.0f, 0.0f}, 
             {0.0f, 0.0f, 1.0f, 0.0f},
             {0.0f, 0.0f, 0.0f, 1.0f}
         };
+        return m;
+
     };
 };
 
