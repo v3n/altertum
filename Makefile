@@ -1,7 +1,7 @@
-# 
+#
 # Copyright (c) Jonathan Howard
 # MIT License
-# 
+#
 
 UNAME := $(shell uname)
 ifeq ($(UNAME),$(filter $(UNAME),Linux Darwin FreeBSD GNU/kFreeBSD))
@@ -57,7 +57,7 @@ doxy:
 
 analyze:
 	make -R -C build/projects/osx -f senior.make clean
-	scan-build --use-analyzer=Xcode -V make -e -R -C build/projects/osx/ -f senior.make 
+	scan-build --use-analyzer=Xcode -V make -e -R -C build/projects/osx/ -f senior.make
 
 .PHONY: clean
 clean:
