@@ -1,4 +1,4 @@
-/* 
+/*
  * Copyright (c) 2015 Jonathan Howard
  * License: https://github.com/v3n/altertum/blob/master/LICENSE
  */
@@ -11,7 +11,7 @@
 
 using namespace foundation;
 using namespace altertum;
-using namespace altertum::components::transform;
+using namespace altertum::components;
 
 /**
  * allocated TransformData of @a sz with @a allocator
@@ -90,7 +90,7 @@ TransformInstance TransformManager::create(Allocator &allocator, Entity e)
         allocate( allocator, _data.size * 3 / 2 );
     }
 
-    TransformInstance instance = { _data.size++ }; 
+    TransformInstance instance = { _data.size++ };
     _data.entity[instance.i] = e;
     hash::set(_map, murmur_hash_64(&e, sizeof(Entity), 0), instance.i);
 

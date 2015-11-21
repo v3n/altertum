@@ -1,4 +1,4 @@
-/* 
+/*
  * Copyright (c) 2015 Jonathan Howard
  * License: https://github.com/v3n/altertum/blob/master/LICENSE
  */
@@ -12,7 +12,7 @@ const unsigned ENTITY_INDEX_BITS        = 22;
 const unsigned ENTITY_INDEX_MASK        = (1 << ENTITY_INDEX_BITS) - 1;
 
 const unsigned ENTITY_GENERATION_BITS   = 8;
-const unsigned ENTITY_GENERATION_MASK   = (1 << ENTITY_GENERATION_BITS) - 1; 
+const unsigned ENTITY_GENERATION_MASK   = (1 << ENTITY_GENERATION_BITS) - 1;
 
 struct Entity
 {

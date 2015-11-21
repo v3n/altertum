@@ -1,4 +1,4 @@
-/* 
+/*
  * Copyright (c) 2015 Jonathan Howard
  * License: https://github.com/v3n/altertum/blob/master/LICENSE
  */
@@ -17,8 +17,6 @@
 namespace altertum
 {
 namespace components
-{
-namespace transform
 {
 
 using namespace foundation;
@@ -71,7 +69,7 @@ public:
     // TransformManager(Allocator * allocator) : _allocator(allocator) { }
 
     /** Create instance from Entity lookup */
-    inline TransformInstance lookup(Entity e) const 
+    inline TransformInstance lookup(Entity e) const
         { return make_instance(hash::get(_map, e.id, (unsigned)0)); }
 
     /** allocate a buffer large enough to hold @a sz elements */
@@ -116,6 +114,5 @@ public:
 
 }; // class TransformManager
 
-} // namespace transform
 } // namespace components
 } // namespace altertum
