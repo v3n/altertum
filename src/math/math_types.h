@@ -25,6 +25,21 @@ struct Vector3
 {
     float x, y, z;
 
+    /** world-space forward unit vector */
+    static const inline Vector3 forward()
+    {
+        Vector3 v = { 0.0f, 0.0f, 1.0f };
+        return v;
+    }
+
+    /** world-space right unit vector */
+    static const inline Vector3 right()
+    {
+        Vector3 v = { -1.0f, 0.0f, 0.0f };
+        return v;
+    }
+
+    /** world-space up unit vector */
     static const inline Vector3 up()
     {
         Vector3 v = { 0.0f, 1.0f, 0.0f };
