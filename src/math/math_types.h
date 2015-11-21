@@ -80,10 +80,11 @@ struct Matrix4
 };
 
 /** Axis-aligned bounding box */
+/* http://www.yosoygames.com.ar/wp/2013/07/good-bye-axisalignedbox-hello-aabb/ */
 struct AABB
 {
-    Vector3 min;
-    Vector3 max;
+    Vector3 origin;
+    Vector3 radius;
 };
 
 /** Oriented bounding box */
