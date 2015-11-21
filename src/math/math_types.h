@@ -25,7 +25,7 @@ struct Vector3
 {
     float x, y, z;
 
-    static inline Vector3 up()
+    static const inline Vector3 up()
     {
         Vector3 v = { 0.0f, 1.0f, 0.0f };
         return v;
@@ -49,7 +49,7 @@ struct Matrix3
 {
     Vector3 a, b, c;
 
-    static inline Matrix3 identity()
+    static const inline Matrix3 identity()
     {
         Matrix3 m = {
             {1.0f, 0.0f, 0.0f},
@@ -66,7 +66,7 @@ struct Matrix4
 {
     Vector4 a, b, c, d;
 
-    static inline Matrix4 identity()
+    static const inline Matrix4 identity()
     {
         Matrix4 m = {
             {1.0f, 0.0f, 0.0f, 0.0f},
