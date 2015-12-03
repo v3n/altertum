@@ -81,6 +81,7 @@ struct Matrix4
 {
     Vector4 a, b, c, d;
 
+    /** returns identity matrix */
     static const inline Matrix4 identity()
     {
         Matrix4 m = {
@@ -90,8 +91,19 @@ struct Matrix4
             {0.0f, 0.0f, 0.0f, 1.0f}
         };
         return m;
-
     };
+
+    /** returns scale bias matrix */
+    static const inline Matrix4 bias()
+    {
+        return
+        {
+            { 0.5f, 0.0f, 0.0f, 0.5f },
+            { 0.0f, 0.5f, 0.0f, 0.5f },
+            { 0.0f, 0.0f, 0.5f, 0.5f },
+            { 0.0f, 0.0f, 0.0f, 1.0f }
+        };
+    }
 };
 
 /** Axis-aligned bounding box */
