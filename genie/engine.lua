@@ -7,7 +7,7 @@ project ( _name )
     kind (_kind)
     language "C++"
 
-    includedirs 
+    includedirs
     {
         ENG_DIR .. "src/",
         BGFX_DIR .. "examples/common",
@@ -27,7 +27,7 @@ project ( _name )
         -- "assimp"
     }
 
-    files 
+    files
     {
         ENG_DIR .. "src/**.h",
         ENG_DIR .. "src/**.cpp",

@@ -1,4 +1,4 @@
-/* 
+/*
  * Copyright (c) 2015 Jonathan Howard
  * License: https://github.com/v3n/altertum/blob/master/LICENSE
  */
@@ -34,7 +34,7 @@ inline Matrix3 matrix3(Vector3 vec[3])
 }; // namespace matrix3
 
 /* implementation */
-namespace matrix3 
+namespace matrix3
 {
 
 inline Matrix3 rotation(const Quaternion& rot)

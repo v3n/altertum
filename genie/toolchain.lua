@@ -63,7 +63,7 @@ function toolchain(build_dir, lib_dir)
         location(build_dir .. "projects/" .. _ACTION)
     end
 
-    flags 
+    flags
     {
         "StaticRuntime",
         "NoPCH",
@@ -96,7 +96,7 @@ function toolchain(build_dir, lib_dir)
         }
 
     configuration { "development or release" }
-        flags 
+        flags
         {
             "OptimizeSpeed"
         }
@@ -144,7 +144,7 @@ function toolchain(build_dir, lib_dir)
         libdirs
         {
             build_dir .. "osx/bin"
-        } 
+        }
 
         links
         {
