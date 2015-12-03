@@ -1,4 +1,4 @@
-/* 
+/*
  * Copyright (c) 2015 Jonathan Howard
  * License: https://github.com/v3n/altertum/blob/master/LICENSE
  */
@@ -14,11 +14,13 @@
 
 /* alignment macros */
 #if ALTERTUM_COMPILER_GCC || ALTERTUM_COMPILER_CLANG
-#   define __ALIGNED__(x)      __attribute__ ((aligned(x)))
-#   define __FORCE_INLINE__    inline  __attribute__ ((always_inline))
+#   define __ALIGNED__(x)       __attribute__ ((aligned(x)))
+#   define __FORCE_INLINE__     inline __attribute__ ((always_inline))
+#   define __NO_VTABLE__
 #elif ALTERTUM_COMPILER_MSVC
-#   define __ALIGNED__(x)      __declspec(align(x))
-#   define __FORCE_INLINE__    __forceinline
+#   define __ALIGNED__(x)       __declspec(align(x))
+#   define __FORCE_INLINE__     __forceinline
+#   define __NO_VTABLE__        __declspec(novtable)
 #else
 #   error "Unknown compiler ALTERTUM_COMPILER_?"
 #endif
