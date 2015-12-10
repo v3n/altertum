@@ -39,7 +39,7 @@ public:
         result = pthread_mutexattr_settype(&_attr, PTHREAD_MUTEX_ERRORCHECK);
         result = pthread_mutex_init(&_mutex, &_attr);
 #   elif ALTERTUM_PLATFORM_WINDOWS
-        InitializeCriticalSection(_mutex);
+        InitializeCriticalSection(&_mutex);
 #   endif // ALTERTUM_PLATFORM_*
     }
 
@@ -49,7 +49,7 @@ public:
         int result = pthread_mutex_destroy(&_mutex);
         result = pthread_mutexattr_destroy(&_attr);
 #   elif ALTERTUM_PLATFORM_WINDOWS
-        DeleteCriticalSection(_mutex);
+        DeleteCriticalSection(&_mutex);
 #   endif // ALTERTUM_PLATFORM_*
     }
 
@@ -59,7 +59,7 @@ public:
         int result = pthread_mutex_lock(&_mutex);
         ASSERT(result == 0);
 #   elif ALTERTUM_PLATFORM_WINDOWS
-        EnterCriticalSection(_mutex);
+        EnterCriticalSection(&_mutex);
 #   endif // ALTERTUM_PLATFORM_*
     }
 
@@ -68,7 +68,7 @@ public:
 #   if ALTERTUM_PLATFORM_POSIX
         int result = pthread_mutex_unlock(&_mutex);
 #   elif ALTERTUM_PLATFORM_WINDOWS
-        LeaveCriticalSection(_mutex);
+        LeaveCriticalSection(&_mutex);
 #   endif // ALTERTUM_PLATFORM_*
     }
 
