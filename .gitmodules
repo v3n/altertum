@@ -7,3 +7,6 @@
 [submodule "ext/bullet3"]
 	path = ext/bullet3
 	url = https://github.com/bulletphysics/bullet3.git
+[submodule "ext/tinyobjloader"]
+	path = ext/tinyobjloader
+	url = https://github.com/syoyo/tinyobjloader.git
