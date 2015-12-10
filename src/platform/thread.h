@@ -81,7 +81,7 @@ public:
         result = pthread_attr_destroy(&attr);
 
 #   elif ALTERTUM_PLATFORM_WINDOWS
-        _handle = CreateThread(NULL, m_stackSize, threadFunc, this, 0, NULL);
+        _handle = CreateThread(NULL, _stack_size, &Thread::thread_process, this, 0, NULL);
 #   endif // ALTERTUM_PLATFORM_*
 
         _is_active = true;
@@ -99,7 +99,7 @@ public:
         _handle = 0;
 #   elif ALTERTUM_PLATFORM_WINDOWS
         WaitForSingleObject(_handle, INFINITE);
-        GetExitCodeThread(_handle, (DWORD*)&m_exitCode);
+        //GetExitCodeThread(_handle, (DWORD*)&m_exitCode);
         CloseHandle(_handle);
         _handle = INVALID_HANDLE_VALUE;
 #   endif // ALTERTUM_PLATFORM_*

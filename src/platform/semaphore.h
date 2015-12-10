@@ -34,9 +34,9 @@ private:
 
 public:
     Semaphore()
-#   if ALTERTUM_PLATFORM_POSIX
+#	if ALTERTUM_PLATFORM_POSIX
         : _count(0)
-#   endif
+#	endif
     {
 #   if ALTERTUM_PLATFORM_POSIX
         int result = pthread_cond_init(&_cond, NULL);
