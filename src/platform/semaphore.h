@@ -1,4 +1,4 @@
-/* 
+/*
  * Copyright (c) 2015 Jonathan Howard
  * License: https://github.com/v3n/altertum/blob/master/LICENSE
  */
@@ -7,8 +7,11 @@
 
 #if ALTERTUM_PLATFORM_POSIX
 #   include <pthread.h>
-#elif ALTERTUM_PLATFORM_WINDOWS 
-#   include "win_headers.h"
+#elif ALTERTUM_PLATFORM_WINDOWS
+#   ifndef WIN32_LEAN_AND_MEAN
+        #define WIN32_LEAN_AND_MEAN
+#   endif
+#   include <windows.h>
 #   include <process.h>
 #endif
 
