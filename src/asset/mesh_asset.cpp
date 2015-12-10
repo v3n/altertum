@@ -20,6 +20,8 @@ namespace mesh_asset
     void * load(const char * file, foundation::Allocator& a)
     {
         // Mesh * m = meshLoad(file);
+
+        return nullptr;
     }
 
     void unload(void * asset, foundation::Allocator& a)
