@@ -1,1 +1,0 @@
-.\ext\bx\tools\bin\windows\genie --file=genie\genie.lua vs2015
