@@ -22,7 +22,7 @@ GENIE=ext/bx/tools/bin/$(OS)/genie
 DOXY=doxygen
 
 osx-build:
-	$(GENIE) --file=genie/genie.lua --compiler=osx --with-tools gmake
+	$(GENIE) --file=genie/genie.lua --compiler=osx --with-profiler --with-tools gmake
 osx-debug:
 	$(MAKE) -R -C build/projects/osx config=debug64
 osx-development:

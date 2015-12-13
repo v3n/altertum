@@ -7,7 +7,7 @@ ENG_DIR = (path.getabsolute("..") .. "/")
 local ENG_EXT_DIR   = (ENG_DIR .. "ext/")
 local ENG_BUILD_DIR = (ENG_DIR .. "build/")
 
-BGFX_DIR    = (ENG_EXT_DIR .. "bgfx/") 
+BGFX_DIR    = (ENG_EXT_DIR .. "bgfx/")
 BX_DIR      = (ENG_EXT_DIR .. "bx/")
 BULLET_DIR  = (ENG_EXT_DIR .. "bullet3/")
 ASSIMP_DIR  = (ENG_EXT_DIR .. "assimp/")
@@ -20,6 +20,11 @@ newoption {
     description = "Build with tools."
 }
 
+newoption {
+    trigger = "with-profiler",
+    description = "Build with intrusive profiling."
+}
+
 solution "engine"
     configurations
     {
@@ -28,7 +33,7 @@ solution "engine"
         "release"
     }
 
-    platforms 
+    platforms
     {
         "x64",
         "native"
@@ -45,6 +50,14 @@ dofile ("assimp.lua")
 dofile ("bullet.lua")
 
 toolchain (ENG_BUILD_DIR, ENG_EXT_DIR)
+
+if _OPTIONS["with-profiler"] then
+    defines {
+        "ENTRY_CONFIG_PROFILER=1",
+        "BGFX_CONFIG_PROFILER_REMOTERY=1",
+        "_WINSOCKAPI_"
+    }
+end
 
 group "libs"
 bgfxProject("", "StaticLib", os.is("windows") and { "BGFX_CONFIG_RENDERER_DIRECT3D9=1" } or {})
