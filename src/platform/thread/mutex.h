@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2015 Jonathan Howard
+ * Copyright (c) 2015-2016 Jonathan Howard
  * License: https://github.com/v3n/altertum/blob/master/LICENSE
  */
 

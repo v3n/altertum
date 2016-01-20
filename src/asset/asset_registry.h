@@ -1,3 +1,4 @@
+
 /*
  * Copyright (c) 2015 Jonathan Howard
  * License: https://github.com/v3n/altertum/blob/master/LICENSE
@@ -10,7 +11,7 @@
 #include "foundation/collection_types.h"
 
 #include "asset/asset_types.h"
-#include "platform/thread.h"
+#include "platform/thread/thread.h"
 
 namespace altertum
 {
