@@ -7,6 +7,11 @@ project ( _name )
     kind (_kind)
     language "C++"
 
+    vpaths
+    {
+        ["*"] = "src"
+    }
+
     includedirs
     {
         ENG_DIR .. "src/",
