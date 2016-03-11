@@ -53,7 +53,7 @@ public:
         int result = pthread_cond_destroy(&_cond);
         ASSERT(0 == result);
 #   elif ALTERTUM_PLATFORM_WINDOWS
-        bool result = CloseHandle(_handle);
+        BOOL result = CloseHandle(_handle);
 #   endif // ALTERTUM_PLATFORM_*
     }
 

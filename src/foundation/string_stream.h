@@ -67,7 +67,7 @@ namespace foundation
 
 		inline Buffer & operator<<(Buffer &b, const char *s)
 		{
-			return push(b, s, strlen(s));
+			return push(b, s, (uint32_t)strlen(s));
 		}
 
 		inline Buffer & operator<<(Buffer &b, float f)

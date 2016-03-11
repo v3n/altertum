@@ -37,7 +37,7 @@ void * AssetRegistry::get(AssetId id)
 void AssetRegistry::load(unsigned type, const char * path)
 {
     using namespace foundation;
-    const AssetInstance& instance = hash::get(_instances, murmur_hash_64(path, strlen(path), 0), AssetInstance::NOT_FOUND);
+    const AssetInstance& instance = hash::get(_instances, murmur_hash_64(path, (uint32_t)strlen(path), 0), AssetInstance::NOT_FOUND);
 
     if ( instance == AssetInstance::NOT_FOUND )
     {
