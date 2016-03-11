@@ -43,3 +43,5 @@ notifications:
     auth_token:
       secure: guMEhdekfCAVCL2fcYXQnjvOARZetae8mt5GVGO8Cz1sq3jPOpfQ952wntnFPLmCYOC3T9Fdtj6dYL8C905f4A==
     channel: code
+  - provider: Webhook
+    url: https://webhooks.gitter.im/e/16925305d206e8d56028
