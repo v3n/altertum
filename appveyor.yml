@@ -3,6 +3,7 @@ build:
   project: build/projects/vs2013/engine.sln
   # enable MSVC parallel building
   parallel: true
+  verbosity: minimal
 
 # only build master & develop
 branches:
