@@ -7,6 +7,7 @@
 
 #include <functional>
 #include <string>
+#include <cstring>
 #include <cstdio>
 
 namespace altertum
@@ -15,20 +16,20 @@ namespace altertum
 class CmdLine
 {
 public:
-    CmdLine(const int _argc, const char ** const _argv, const char * description = nullptr)
+    CmdLine(const int _argc, char ** _argv, const char * description)
         : m_argc(_argc)
         , m_argv(_argv)
     {
-        help += _argv[0];
+        m_help += _argv[0];
         if (description)
         {
-            help += " - ";
-            help += description;
-            help += "\n\n";
+            m_help += " - ";
+            m_help += description;
+            m_help += "\n\n";
         }
         else
         {
-            help += "\n\n";
+            m_help += "\n\n";
         }
     }
 
@@ -46,45 +47,48 @@ public:
         )
     {
         bool shouldHelp = true;
-        help += "  ";
+        m_help += "  ";
 
         if (short_name)
         {
-            help += kShortOptPrefix + short_name;
+            m_help += kShortOptPrefix;
+            m_help += short_name;
         }
 
         if (long_name)
         {
-            if (short_name) help += ",";
-            help += kLongOptPrefix + long_name;
+            if (short_name) m_help += ",";
+            m_help += kLongOptPrefix;
+            m_help += long_name;
         }
 
         if (help)
         {
-            help += "\t\t" + help;
+            m_help += "\t\t";
+            m_help += help;
         }
 
-        help += "\n";
+        m_help += "\n";
 
         for ( size_t i = 0; i < m_argc; i++ )
         {
-            if (strncmpr(long_name, kLongOptPrefix, strlen(kLongOptPrefix)))
+            if (strncmp(long_name, kLongOptPrefix, strlen(kLongOptPrefix)))
             {
-                if (char * ptr = strchr(long_name, "="))
+                if (char * ptr = strchr(long_name, '='))
                 {
                     shouldHelp = false;
-                    SetOpt<T>(++ptr, functor);
+                    SetOpt(++ptr, functor);
                 }
                 else
                 {
                     shouldHelp = false;
-                    SetOpt<T>((++i < m_argc) ? m_argv[i] : nullptr, functor);
+                    SetOpt((++i < m_argc) ? m_argv[i] : nullptr, functor);
                 }
             }
-            else if (strncmpr(short_name, kShortOptPrefix, strlen(kShortOptPrefix)))
+            else if (strncmp(short_name, kShortOptPrefix, strlen(kShortOptPrefix)))
             {
                 shouldHelp = false;
-                SetOpt<T>((++i < m_argc) ? m_argv[i] : nullptr, functor);
+                SetOpt((++i < m_argc) ? m_argv[i] : nullptr, functor);
             }
         }
 
@@ -95,7 +99,7 @@ public:
     }
 
     void PrintHelp()
-    {   printf("%s", help.c_str());
+    {   printf("%s", m_help.c_str());
         exit(0);
     }
 
@@ -131,9 +135,9 @@ private:
         functor(value);
     }
 
-    std::string help;
+    std::string m_help;
 
     const int m_argc;
-    const char ** const m_argv;
+    char ** m_argv;
 };
 }
