@@ -3,6 +3,11 @@
 --
 
 function engine_project( _name, _kind, _defines )
+
+local ENG_TEST_DIR = (ENG_DIR .. "test/")
+local GTEST_DIR    = (ENG_DIR .. "/ext/googletest/googletest/")
+local GMOCK_DIR    = (ENG_DIR .. "/ext/googletest/googlemock/")
+
 project ( _name )
     kind (_kind)
     language "C++"
@@ -132,6 +137,33 @@ project ( _name )
     configuration {}
 
     strip()
+
+    configuration {}
+
+project ( _name .. "_tests" )
+    kind("ConsoleApp")
+    language "C++"
+
+    includedirs
+    {
+        GTEST_DIR .. "include/",
+        GTEST_DIR,
+        ENG_DIR .. "src/",
+        ENG_DIR .. "ext/luajit/src"
+
+    }
+
+    files
+    {
+        GTEST_DIR .. "src/**.cc",
+        ENG_TEST_DIR .. "**.h",
+        ENG_TEST_DIR .. "**.cpp"
+    }
+
+    excludes
+    {
+        GTEST_DIR .. "src/gtest-all.cc",
+    }
 
     configuration {}
 end

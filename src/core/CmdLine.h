@@ -42,8 +42,8 @@ public:
         char * short_name,
         char * long_name,
         char * help,
-        std::function<void(T)> functor,
-        bool required = false
+        bool required,
+        std::function<void(T)> functor
         )
     {
         bool shouldHelp = true;
@@ -72,27 +72,33 @@ public:
 
         for ( size_t i = 0; i < m_argc; i++ )
         {
-            if (strncmp(long_name, kLongOptPrefix, strlen(kLongOptPrefix)))
+            if (long_name && strncmp(long_name, kLongOptPrefix, strlen(kLongOptPrefix)))
             {
-                if (char * ptr = strchr(long_name, '='))
+                if (!strcmp(long_name, m_argv[i] + strlen(kLongOptPrefix)))
                 {
-                    shouldHelp = false;
-                    SetOpt(++ptr, functor);
+                    if (char * ptr = strchr(m_argv[i], '='))
+                    {
+                        shouldHelp = false;
+                        SetOpt(++ptr, functor);
+                    }
+                    else
+                    {
+                        shouldHelp = false;
+                        SetOpt((++i < m_argc) ? m_argv[i] : nullptr, functor);
+                    }
                 }
-                else
+            }
+            else if (short_name && strncmp(short_name, kShortOptPrefix, strlen(kShortOptPrefix)))
+            {
+                if (!strcmp(short_name, m_argv[i] + strlen(kShortOptPrefix)))
                 {
                     shouldHelp = false;
                     SetOpt((++i < m_argc) ? m_argv[i] : nullptr, functor);
                 }
             }
-            else if (strncmp(short_name, kShortOptPrefix, strlen(kShortOptPrefix)))
-            {
-                shouldHelp = false;
-                SetOpt((++i < m_argc) ? m_argv[i] : nullptr, functor);
-            }
         }
 
-        if (shouldHelp)
+        if (required && shouldHelp)
         {
             PrintHelp();
         }
