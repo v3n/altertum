@@ -27,6 +27,10 @@ struct AssetTypes
     , SIZE
 }; };
 
+
+/**
+ * static mesh data, base for model.
+ */
 struct Mesh
 {
     // struct SubMesh
@@ -39,8 +43,14 @@ struct Mesh
     bgfx::Memory * indices;
 
     bgfx::VertexDecl            ms_decl;
-    bgfx::VertexBufferHandle    vb;
-    bgfx::IndexBufferHandle     ib;
+    bgfx::VertexBufferHandle    vertex_buffer;
+    bgfx::IndexBufferHandle     index_buffer;
+
+    uint32_t vertex_stride;
+    uint32_t indices_offset;
+
+    uint32_t vertices_count;
+    uint32_t indices_count;
 
     // unsigned     n_submeshed;
     // SubMesh      submeshes[ALTERTUM_MAX_SUBMESHES];
