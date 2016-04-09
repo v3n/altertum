@@ -33,19 +33,19 @@ namespace mesh_asset
     {
         Mesh * m = (Mesh *)ar.get(id);
 
-        m->vb = bgfx::createVertexBuffer(m->vertices, m->ms_decl);
-        m->ib = bgfx::createIndexBuffer(m->indices);
+        m->vertex_buffer = bgfx::createVertexBuffer(m->vertices, m->ms_decl);
+        m->index_buffer = bgfx::createIndexBuffer(m->indices);
     }
 
     void off(AssetId id, AssetRegistry& ar)
     {
         Mesh * m = (Mesh *)ar.get(id);
 
-        bgfx::destroyVertexBuffer(m->vb);
-        bgfx::destroyIndexBuffer(m->ib);
+        bgfx::destroyVertexBuffer(m->vertex_buffer);
+        bgfx::destroyIndexBuffer(m->index_buffer);
 
-        m->vb = BGFX_INVALID_HANDLE;
-        m->ib = BGFX_INVALID_HANDLE;
+        m->vertex_buffer = BGFX_INVALID_HANDLE;
+        m->index_buffer = BGFX_INVALID_HANDLE;
     }
 } // namespace mesh_asset
 } // namespace altertum
