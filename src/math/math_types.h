@@ -112,6 +112,8 @@ struct AABB
 {
     Vector3 origin;
     Vector3 radius;
+	Vector3 max;
+	Vector3 min;
 };
 
 /** Oriented bounding box */
