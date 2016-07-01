@@ -138,7 +138,7 @@ struct MatrixTest :testing::Test {
 	}
 	void TearDown()
 	{
-		delete mat4_1, mat4_2, mat3_1, mat3_2;
+		delete mat4_1, mat4_2, mat3_1, mat3_2, a, b, c, d, a2, b2, c2;
 	}
 	
 	/*Assign matrix3 values from parameters*/
@@ -189,7 +189,7 @@ struct BBoxTest :testing::Test {
 	}
 	void TearDown()
 	{
-		delete a2b2_1, a2b2_2, o1b2_1, o1b2_2;
+		delete a2b2_1, a2b2_2, o1b2_1, o1b2_2, a, b, c, d, a2, b2, c2, m4, origin, radius, max, min;
 	}
 	/*Return true if a's properties == b's properties. Used in function CheckOBBTransformEquality*/
 	const bool CheckA2B2Equality(const AABB &a, const AABB &b)
