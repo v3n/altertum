@@ -67,12 +67,9 @@ Matrix4* CreateMat4(Vector4 &a, Vector4 &b, Vector4 &c, Vector4 &d)
 	return mat4;
 }
 struct VectorTest :testing ::Test {
-	Vector4* vec4_1;
-	Vector4* vec4_2;
-	Vector3* vec3_1;
-	Vector3* vec3_2;
-	Vector2* vec2_1;
-	Vector2* vec2_2;
+	Vector4 * vec4_1, * vec4_2;
+	Vector3 * vec3_1, * vec3_2;
+	Vector2 * vec2_1, * vec2_2;
 
 	void SetUp()
 	{
@@ -128,11 +125,10 @@ struct VectorTest :testing ::Test {
 	//~VectorTest() {}
 };
 struct MatrixTest :testing::Test {
-	Matrix4* mat4_1;
-	Matrix4* mat4_2;
-	Matrix3* mat3_1;
-	Matrix3* mat3_2;
-
+	Matrix4 * mat4_1, * mat4_2;
+	Matrix3 * mat3_1, * mat3_2;
+	Vector4 * a, * b, * c, * d;
+	Vector3* a2, * b2, * c2;
 	void SetUp()
 	{
 		mat4_1 = new Matrix4;
@@ -178,11 +174,12 @@ struct MatrixTest :testing::Test {
 	//~MatrixTest() {}
 };
 struct BBoxTest :testing::Test {
-	AABB* a2b2_1;
-	AABB* a2b2_2;
-	OBB* o1b2_1;
-	OBB* o1b2_2;
-
+	AABB * a2b2_1, * a2b2_2;
+	OBB * o1b2_1, * o1b2_2;
+	Vector4 * a, * b, * c, * d;
+	Vector3 * a2, * b2, * c2;
+	Matrix4 * m4;
+	Vector3 * origin, * radius, * max, * min;
 	void SetUp()
 	{
 		a2b2_1 = new AABB;
@@ -248,8 +245,7 @@ struct BBoxTest :testing::Test {
 	//~BBoxTest() {}
 };
 struct QuatTest :testing::Test {
-	Quaternion* quat1;
-	Quaternion* quat2;
+	Quaternion * quat1, * quat2;
 
 	void SetUp()
 	{
@@ -352,10 +348,6 @@ TEST_F(VectorTest, vecFunctions)
 TEST_F(MatrixTest, matArithmetic)
 {
 	//Matrix4
-	Vector4* a;
-	Vector4* b;
-	Vector4* c;
-	Vector4* d;
 	a = CreateV4(0.0f, 0.0f, 0.0f, 0.0f);
 	b = CreateV4(0.0f, 0.0f, 0.0f, 0.0f);
 	c = CreateV4(0.0f, 0.0f, 0.0f, 0.0f);
@@ -364,9 +356,6 @@ TEST_F(MatrixTest, matArithmetic)
 	AssignMat4(*mat4_2, *d, *c, *b, *a);
 
 	//Matrix3
-	Vector3* a2;
-	Vector3* b2;
-	Vector3* c2;
 	a2 = CreateV3(0.0f, 0.0f, 0.0f);
 	b2 = CreateV3(0.0f, 0.0f, 0.0f);
 	c2 = CreateV3(0.0f, 0.0f, 0.0f);
@@ -378,10 +367,6 @@ TEST_F(MatrixTest, matArithmetic)
 TEST_F(MatrixTest, matFunctions)
 {
 	//Matrix4
-	Vector4* a;
-	Vector4* b;
-	Vector4* c;
-	Vector4* d;
 	a = CreateV4(0.0f, 0.0f, 0.0f, 0.0f);
 	b = CreateV4(0.0f, 0.0f, 0.0f, 0.0f);
 	c = CreateV4(0.0f, 0.0f, 0.0f, 0.0f);
@@ -390,9 +375,6 @@ TEST_F(MatrixTest, matFunctions)
 	AssignMat4(*mat4_2, *d, *c, *b, *a);
 
 	//Matrix3
-	Vector3* a2;
-	Vector3* b2;
-	Vector3* c2;
 	a2 = CreateV3(0.0f, 0.0f, 0.0f);
 	b2 = CreateV3(0.0f, 0.0f, 0.0f);
 	c2 = CreateV3(0.0f, 0.0f, 0.0f);
@@ -403,19 +385,15 @@ TEST_F(MatrixTest, matFunctions)
 //Bounding box arithmetic
 TEST_F(BBoxTest, bboxArithmetic)
 {
-	Vector4* a;
-	Vector4* b;
-	Vector4* c;
-	Vector4* d;
 	a = CreateV4(0.0f, 0.0f, 0.0f, 0.0f);
 	b = CreateV4(0.0f, 0.0f, 0.0f, 0.0f);
 	c = CreateV4(0.0f, 0.0f, 0.0f, 0.0f);
 	d = CreateV4(0.0f, 0.0f, 0.0f, 0.0f);
-	Matrix4* m4 = CreateMat4(*a, *b, *c, *d);
-	Vector3* origin = CreateV3(0.0f, 0.0f, 0.0f);
-	Vector3* radius = CreateV3(0.0f, 0.0f, 0.0f);
-	Vector3* max = CreateV3(0.0f, 0.0f, 0.0f);
-	Vector3* min = CreateV3(0.0f, 0.0f, 0.0f);
+	m4 = CreateMat4(*a, *b, *c, *d);
+	origin = CreateV3(0.0f, 0.0f, 0.0f);
+	radius = CreateV3(0.0f, 0.0f, 0.0f);
+	max = CreateV3(0.0f, 0.0f, 0.0f);
+	min = CreateV3(0.0f, 0.0f, 0.0f);
 	AssignAABB(*a2b2_1, *origin, *radius, *max, *min);
 	AssignOBB(*o1b2_1, *a2b2_1, *m4);
 }
@@ -423,19 +401,16 @@ TEST_F(BBoxTest, bboxArithmetic)
 //Bounding box functions
 TEST_F(BBoxTest, bboxFunctions)
 {
-	Vector4* a;
-	Vector4* b;
-	Vector4* c;
-	Vector4* d;
+	
 	a = CreateV4(0.0f, 0.0f, 0.0f, 0.0f);
 	b = CreateV4(0.0f, 0.0f, 0.0f, 0.0f);
 	c = CreateV4(0.0f, 0.0f, 0.0f, 0.0f);
 	d = CreateV4(0.0f, 0.0f, 0.0f, 0.0f);
-	Matrix4* m4 = CreateMat4(*a, *b, *c, *d);
-	Vector3* origin = CreateV3(0.0f, 0.0f, 0.0f);
-	Vector3* radius = CreateV3(0.0f, 0.0f, 0.0f);
-	Vector3* max = CreateV3(0.0f, 0.0f, 0.0f);
-	Vector3* min = CreateV3(0.0f, 0.0f, 0.0f);
+	m4 = CreateMat4(*a, *b, *c, *d);
+	origin = CreateV3(0.0f, 0.0f, 0.0f);
+	radius = CreateV3(0.0f, 0.0f, 0.0f);
+	max = CreateV3(0.0f, 0.0f, 0.0f);
+	min = CreateV3(0.0f, 0.0f, 0.0f);
 	AssignAABB(*a2b2_1, *origin, *radius, *max, *min);
 	AssignOBB(*o1b2_1, *a2b2_1, *m4);
 }
