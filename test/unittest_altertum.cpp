@@ -374,38 +374,60 @@ TEST_F(VectorTest, vecFunctions)
 TEST_F(MatrixTest, matArithmetic)
 {
 	//Matrix4
-	a = CreateV4(0.0f, 0.0f, 0.0f, 0.0f);
-	b = CreateV4(0.0f, 0.0f, 0.0f, 0.0f);
+	a = CreateV4(1.0f, 2.0f, 3.0f, 4.0f);
+	b = CreateV4(5.0f, 6.0f, 7.0f, 8.0f);
 	c = CreateV4(0.0f, 0.0f, 0.0f, 0.0f);
 	d = CreateV4(0.0f, 0.0f, 0.0f, 0.0f);
 	AssignMat4(*mat4_1, *a, *b, *c, *d);
 	AssignMat4(*mat4_2, *d, *c, *b, *a);
-
+	EXPECT_FALSE(CheckMat4Equality(*mat4_1, *mat4_2));
+	EXPECT_TRUE(mat4_1->a.w == mat4_2->d.w);
+	EXPECT_TRUE(mat4_1->a.x == mat4_2->d.x);
+	EXPECT_TRUE(mat4_1->a.y == mat4_2->d.y);
+	EXPECT_TRUE(mat4_1->a.z == mat4_2->d.z);
+	
 	//Matrix3
-	a2 = CreateV3(0.0f, 0.0f, 0.0f);
-	b2 = CreateV3(0.0f, 0.0f, 0.0f);
-	c2 = CreateV3(0.0f, 0.0f, 0.0f);
+	a2 = CreateV3(1.0f, 2.0f, 3.0f);
+	b2 = CreateV3(4.0f, 5.0f, 6.0f);
+	c2 = CreateV3(7.0f, 8.0f, 9.0f);
 	AssignMat3(*mat3_1, *a2, *b2, *c2);
 	AssignMat3(*mat3_1, *c2, *b2, *a2);
+	EXPECT_FALSE(CheckMat3Equality(*mat3_1, *mat3_2));
 }
 
 //Matrix Functions
 TEST_F(MatrixTest, matFunctions)
 {
 	//Matrix4
-	a = CreateV4(0.0f, 0.0f, 0.0f, 0.0f);
-	b = CreateV4(0.0f, 0.0f, 0.0f, 0.0f);
-	c = CreateV4(0.0f, 0.0f, 0.0f, 0.0f);
-	d = CreateV4(0.0f, 0.0f, 0.0f, 0.0f);
+	a = CreateV4(1.0f, 0.0f, 0.0f, 0.0f);
+	b = CreateV4(0.0f, 1.0f, 0.0f, 0.0f);
+	c = CreateV4(0.0f, 0.0f, 1.0f, 0.0f);
+	d = CreateV4(0.0f, 0.0f, 0.0f, 1.0f);
 	AssignMat4(*mat4_1, *a, *b, *c, *d);
+	
+	//identity
+	const Matrix4 identityMat = Matrix4::identity();
+	EXPECT_TRUE(CheckMat4Equality(*mat4_1, identityMat));
+
+	a = CreateV4(0.5f, 0.0f, 0.0f, 0.5f);
+	b = CreateV4(0.0f, 0.5f, 0.0f, 0.5f);
+	c = CreateV4(0.0f, 0.0f, 0.5f, 0.5f);
+	d = CreateV4(0.0f, 0.0f, 0.0f, 1.0f);
 	AssignMat4(*mat4_2, *d, *c, *b, *a);
+	
+	//bias
+	const Matrix4 biasMat = Matrix4::bias();
+	EXPECT_TRUE(CheckMat4Equality(*mat4_2, biasMat));
 
 	//Matrix3
-	a2 = CreateV3(0.0f, 0.0f, 0.0f);
-	b2 = CreateV3(0.0f, 0.0f, 0.0f);
-	c2 = CreateV3(0.0f, 0.0f, 0.0f);
+	a2 = CreateV3(1.0f, 0.0f, 0.0f);
+	b2 = CreateV3(0.0f, 1.0f, 0.0f);
+	c2 = CreateV3(0.0f, 0.0f, 1.0f);
 	AssignMat3(*mat3_1, *a2, *b2, *c2);
-	AssignMat3(*mat3_1, *c2, *b2, *a2);
+
+	//identity
+	const Matrix3 identityMat3 = Matrix3::identity();
+	EXPECT_TRUE(CheckMat3Equality(*mat3_1, identityMat3));
 }
 
 //Bounding box arithmetic
