@@ -297,7 +297,22 @@ TEST_F(VectorTest, vecArithmetic)
 	AssignV4(*vec4_2, 234.567f, -333444555.9f, .1234567875f, 11.2344432f);
 	EXPECT_NE(vec4_1, vec4_2);
 	EXPECT_FALSE(CheckV4Equality(*vec4_1, *vec4_2));
-	
+	vec4_1->w += .067f;
+	EXPECT_EQ(vec4_1->w, vec4_2->w);
+	vec4_1 = vec4_2;
+	for (int i = 0; i < 20; i++)
+	{
+		AssignV4(*vec4_1, vec4_1->w + i, vec4_1->x + i, vec4_1->y + i, vec4_1->z);
+		AssignV4(*vec4_2, vec4_2->w + i, vec4_2->x + i, vec4_2->y + i, vec4_2->z);
+	}
+	EXPECT_TRUE(CheckV4Equality(*vec4_1, *vec4_2));
+	for (int i = 1; i < 1000; i++)
+	{
+		EXPECT_EQ(vec4_1->w/(12+i), vec4_2->w/(12+i));
+		EXPECT_EQ(vec4_1->x/(-1-i), vec4_2->x/(-1-i));
+		EXPECT_EQ(vec4_1->y/(-1234*i), vec4_2->y/(-1234*i));
+		EXPECT_EQ(vec4_1->z/(905/i), vec4_2->z/(905/i));
+	}
 	//Vector3
 	AssignV3(*vec3_1, 1.2f, 3.4f, 4.5f);
 	AssignV3(*vec3_2, vec3_1->x, vec3_1->y, 18.5f);
@@ -309,9 +324,6 @@ TEST_F(VectorTest, vecArithmetic)
 	for (int i = 0; i < 20; i++)
 	{
 		AssignV3(*vec3_1, vec3_1->x + i, vec3_1->y + i, vec3_1->z + i);
-	}
-	for (int i = 0; i < 20; i++)
-	{
 		AssignV3(*vec3_2, vec3_2->x + i, vec3_2->y + i, vec3_2->z + i);
 	}
 	EXPECT_TRUE(CheckV3Equality(*vec3_1, *vec3_2));
@@ -327,21 +339,35 @@ TEST_F(VectorTest, vecArithmetic)
 	AssignV2(*vec2_2, 453.4443325251f, -9000882.453f);
 	EXPECT_NE(vec2_1, vec2_2);
 	EXPECT_FALSE(CheckV2Equality(*vec2_1, *vec2_2));
+	for (int i = 0; i < 20; i++)
+	{
+		AssignV2(*vec2_1, vec2_1->x + i, vec2_1->y + i);
+		AssignV2(*vec2_2, vec2_2->x + i, vec2_2->y + i);
+	}
+	EXPECT_FALSE(CheckV2Equality(*vec2_1, *vec2_2));
+	EXPECT_TRUE(vec2_1->x * 100 > vec2_2->x);
+	for (int i = 1; i < 200; i++)
+	{
+		EXPECT_NE(vec2_1->x/i, vec2_2->x/i);
+		EXPECT_NE(vec2_1->y / (i*i*i), vec2_2->y / (i*i*i));
+	}
 }
 //Vector Functions
 TEST_F(VectorTest, vecFunctions)
 {
-	//Vector4
-	AssignV4(*vec4_1, 0.0f, 0.0f, 0.0f, 0.0f);
-	AssignV4(*vec4_2, 0.0f, 0.0f, 0.0f, 0.0f);
-	
 	//Vector3
-	AssignV3(*vec3_1, 0.0f, 0.0f, 0.0f);
-	AssignV3(*vec3_2, 0.0f, 0.0f, 0.0f);
-	
-	//Vector2
-	AssignV2(*vec2_1, 0.0f, 0.0f);
-	AssignV2(*vec2_2, 0.0f, 0.0f);
+	const Vector3 forwardVec = Vector3::forward();
+	const Vector3 rightVec = Vector3::right();
+	const Vector3 upVec = Vector3::up();
+	EXPECT_EQ(forwardVec.z, 1.0f);
+	EXPECT_EQ(forwardVec.x, 0.0f);
+	EXPECT_EQ(forwardVec.y, 0.0f);
+	EXPECT_EQ(rightVec.x, -1.0f);
+	EXPECT_EQ(rightVec.y, 0.0f);
+	EXPECT_EQ(rightVec.z, 0.0f);
+	EXPECT_EQ(upVec.y, 1.0f);
+	EXPECT_EQ(upVec.x, 0.0f);
+	EXPECT_EQ(upVec.z, 0.0f);
 }
 
 //Matrix Arithmetic
@@ -395,13 +421,14 @@ TEST_F(BBoxTest, bboxArithmetic)
 	max = CreateV3(0.0f, 0.0f, 0.0f);
 	min = CreateV3(0.0f, 0.0f, 0.0f);
 	AssignAABB(*a2b2_1, *origin, *radius, *max, *min);
+	a2b2_2 = a2b2_1;
 	AssignOBB(*o1b2_1, *a2b2_1, *m4);
+	o1b2_2 = o1b2_1;
 }
 
 //Bounding box functions
 TEST_F(BBoxTest, bboxFunctions)
 {
-	
 	a = CreateV4(0.0f, 0.0f, 0.0f, 0.0f);
 	b = CreateV4(0.0f, 0.0f, 0.0f, 0.0f);
 	c = CreateV4(0.0f, 0.0f, 0.0f, 0.0f);
@@ -412,7 +439,9 @@ TEST_F(BBoxTest, bboxFunctions)
 	max = CreateV3(0.0f, 0.0f, 0.0f);
 	min = CreateV3(0.0f, 0.0f, 0.0f);
 	AssignAABB(*a2b2_1, *origin, *radius, *max, *min);
+	a2b2_2 = a2b2_1;
 	AssignOBB(*o1b2_1, *a2b2_1, *m4);
+	o1b2_2 = o1b2_1;
 }
 
 //Quaternion arithmetic
