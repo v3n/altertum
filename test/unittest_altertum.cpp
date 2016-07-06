@@ -451,6 +451,8 @@ TEST_F(BBoxTest, bboxArithmetic)
 //Bounding box functions
 TEST_F(BBoxTest, bboxFunctions)
 {
+	//no bounding box functions yet
+	/*
 	a = CreateV4(0.0f, 0.0f, 0.0f, 0.0f);
 	b = CreateV4(0.0f, 0.0f, 0.0f, 0.0f);
 	c = CreateV4(0.0f, 0.0f, 0.0f, 0.0f);
@@ -464,6 +466,7 @@ TEST_F(BBoxTest, bboxFunctions)
 	a2b2_2 = a2b2_1;
 	AssignOBB(*o1b2_1, *a2b2_1, *m4);
 	o1b2_2 = o1b2_1;
+	*/
 }
 
 //Quaternion arithmetic
@@ -476,6 +479,9 @@ TEST_F(QuatTest, quatArithmetic)
 //Quaternion functions
 TEST_F(QuatTest, quatFunctions)
 {
+	//No quaternion functions yet
+	/*
 	AssignQuat(*quat1, 0.0f, 0.0f, 0.0f, 0.0f);
 	AssignQuat(*quat2, 0.0f, 0.0f, 0.0f, 0.0f);
+	*/
 }
