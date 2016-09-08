@@ -78,7 +78,7 @@ float zsize(const AABB & box)
 /** Returns the volume of a given box.*/
 float volume(const AABB & box)
 {
-	return (xsize(box) * xsize(box) * zsize(box));
+	return (xsize(box) * ysize(box) * zsize(box));
 }
 
 /** Returns true if a point is contained within a box*/
